@@ -168,10 +168,12 @@
     },
     {
       "id": "osona",
+      "url": "https://osonabici.cat",
+      "years": "2019 - 2026",
       "ca": {
         "name": "Osona amb Bici",
         "short": "Osona amb Bici",
-        "kind": "Entitat",
+        "kind": "Entitat sense ànim de lucre",
         "role": "President",
         "where": "Osona",
         "tag": "La bicicleta com a mitjà de transport de cada dia a la comarca d’Osona.",
@@ -187,7 +189,7 @@
       "es": {
         "name": "Osona amb Bici",
         "short": "Osona amb Bici",
-        "kind": "Asociación",
+        "kind": "Asociación sin ánimo de lucro",
         "role": "Presidente",
         "where": "Osona",
         "tag": "La bicicleta como medio de transporte diario en la comarca de Osona.",
@@ -203,7 +205,7 @@
       "en": {
         "name": "Osona amb Bici",
         "short": "Osona amb Bici",
-        "kind": "Association",
+        "kind": "Nonprofit",
         "role": "President",
         "where": "Osona, Catalonia",
         "tag": "The bicycle as everyday transport across the Osona region.",
