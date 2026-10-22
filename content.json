@@ -1,10 +1,13 @@
 {
+  "contact": {
+    "email": "hola@eduardfolch.bike"
+  },
   "site": {
     "ca": {
       "explore": "Explora",
       "projects": "Projectes",
-      "eyebrow": "Contacte",
       "title": "Parlem de bicis.",
+      "eyebrow": "Contacte",
       "cta": "Escriu-me",
       "tag1": "Sempre sobre dues rodes",
       "tag2": "Passió per la mobilitat amb bicicleta",
@@ -19,8 +22,8 @@
     "es": {
       "explore": "Explora",
       "projects": "Proyectos",
-      "eyebrow": "Contacto",
       "title": "Hablemos de bicis.",
+      "eyebrow": "Contacto",
       "cta": "Escríbeme",
       "tag1": "Siempre sobre dos ruedas",
       "tag2": "Pasión por la movilidad en bicicleta",
@@ -35,8 +38,8 @@
     "en": {
       "explore": "Explore",
       "projects": "Projects",
-      "eyebrow": "Contact",
       "title": "Let’s talk bikes.",
+      "eyebrow": "Contact",
       "cta": "Write to me",
       "tag1": "Always on two wheels",
       "tag2": "A passion for getting around by bike",
@@ -49,14 +52,11 @@
       "visit": "Visit the website"
     }
   },
-  "contact": {
-    "email": "hola@eduardfolch.bike"
-  },
   "projects": [
     {
       "id": "bicibus",
       "url": "https://bicibus.eu",
-      "years": "2020 –",
+      "years": "2020 – 2026",
       "ca": {
         "name": "Bicibús.eu",
         "short": "Bicibús.eu",
@@ -114,13 +114,13 @@
     },
     {
       "id": "guia",
-      "url": "",
-      "years": "",
+      "url": "https://www.diba.cat/documents/d/mediambient/guia-mob-escolar-2026",
+      "years": "2026",
       "ca": {
-        "name": "Guia de mobilitat escolar",
-        "short": "Guia mobilitat escolar",
-        "kind": "Guia pràctica",
-        "role": "",
+        "name": "Guia de mobilitat escolar sostenible",
+        "short": "Guia mobilitat escolar ",
+        "kind": "Guia pràctica per a la Diputació de Barcelona",
+        "role": "Autor",
         "where": "Escoles i municipis",
         "tag": "Com fer que anar a l’escola a peu o en bici sigui segur, saludable i habitual.",
         "body": [
@@ -137,7 +137,6 @@
         "name": "Guía de movilidad escolar",
         "short": "Guía movilidad escolar",
         "kind": "Guía práctica",
-        "role": "",
         "where": "Colegios y municipios",
         "tag": "Cómo hacer que ir al colegio a pie o en bici sea seguro, saludable y habitual.",
         "body": [
@@ -154,7 +153,6 @@
         "name": "School mobility guide",
         "short": "School mobility guide",
         "kind": "Practical guide",
-        "role": "",
         "where": "Schools and towns",
         "tag": "How to make walking and cycling to school safe, healthy and normal.",
         "body": [
@@ -170,8 +168,6 @@
     },
     {
       "id": "osona",
-      "url": "",
-      "years": "",
       "ca": {
         "name": "Osona amb Bici",
         "short": "Osona amb Bici",
