@@ -215,6 +215,89 @@ kbd{font:700 12px/1 var(--font);background:var(--bone);color:var(--black);border
 @media (prefers-reduced-motion:reduce){
   .tile,.band,.track,.bike,.wheel,.crank,.rider,.lane,.inner,.pg{animation:none!important}
 }
+
+/* ================= EXPLORA · CARGOBIKE · FITXES ================= */
+.navlink{background:transparent;border:0;color:var(--bone);font:800 14px/1 var(--font);letter-spacing:.04em;text-transform:uppercase;padding:11px 12px;border-radius:999px;cursor:pointer}
+.navlink:hover{background:rgba(239,232,228,.08)}
+.t-black{cursor:pointer}
+.t-black:focus-visible{outline:2px solid var(--bone);outline-offset:-8px}
+.hint{position:absolute;left:16px;top:16px;z-index:2;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--bone);background:var(--red);padding:8px 12px;border-radius:999px;pointer-events:none}
+.hint::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--bone);animation:blink 1.4s infinite}
+@keyframes blink{50%{opacity:.2}}
+
+.ov{position:fixed;inset:0;z-index:90;overflow-y:auto;overscroll-behavior:contain}
+.ov .x{position:fixed;z-index:96}
+.stage{background:radial-gradient(90% 70% at 50% 85%, #3d0a12 0%, #160809 55%, var(--black) 100%);overflow:hidden}
+.stage-head{position:relative;z-index:3;max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;
+  padding-left:max(16px, env(safe-area-inset-left,0px));padding-right:calc(70px + env(safe-area-inset-right,0px));padding-block:calc(22px + env(safe-area-inset-top,0px)) 0}
+.stage-head h2{margin:8px 0 0;font-weight:900;font-size:clamp(38px,6vw,80px);line-height:.88;letter-spacing:-.06em;max-width:14ch;text-wrap:balance}
+.stage-head p{margin:10px 0 0;color:#c9bcbd;max-width:42ch}
+.ground{position:absolute;left:0;right:0;bottom:9%;height:3px;background:repeating-linear-gradient(90deg, rgba(239,232,228,.28) 0 40px, transparent 40px 80px);animation:dash 1.6s linear infinite}
+.cargo-pos{position:absolute;left:50%;bottom:calc(9% - 1px);width:min(94vw, 1000px, 120vh);transform:translateX(-50%)}
+.cargo{position:relative;width:100%;aspect-ratio:2/1;transform-origin:50% 50%}
+.cargo svg.big{position:absolute;inset:0;width:100%;height:100%;overflow:visible;color:var(--bone)}
+.boxfront{position:absolute;left:51.5%;top:44.6%;width:40%;height:30.8%;z-index:3;background:linear-gradient(180deg,var(--red),#b80d22);border:2px solid var(--bone);border-radius:6px;
+  display:grid;place-items:center;pointer-events:none;box-shadow:inset 0 10px 0 rgba(0,0,0,.18)}
+.boxfront span{font-weight:500;font-size:clamp(14px,2.6vw,30px);letter-spacing:-.05em;color:var(--bone)}
+.parcel{all:unset;box-sizing:border-box;position:absolute;z-index:2;width:12.5%;aspect-ratio:1/.9;bottom:53%;cursor:grab;touch-action:none;
+  background:#d8c6b8;border-radius:5px;box-shadow:inset 0 -6px 0 rgba(0,0,0,.08), 0 6px 18px rgba(0,0,0,.35);
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:6%;
+  translate:0 140%;transition:translate .7s cubic-bezier(.3,1.5,.5,1), rotate .3s;rotate:var(--r)}
+.parcel::before{content:"";position:absolute;left:44%;top:0;bottom:0;width:12%;background:var(--red);opacity:.9}
+.parcel span{position:relative;z-index:1;background:var(--bone);color:var(--black);font-weight:800;font-size:clamp(9px,1.25vw,14px);letter-spacing:-.02em;line-height:1.05;
+  padding:4px 6px;border-radius:3px;max-width:92%;text-align:center;box-shadow:0 1px 0 rgba(0,0,0,.2)}
+.stage.in .parcel{translate:0 0}
+.parcel:hover{rotate:0deg}
+.parcel:focus-visible{outline:3px solid var(--bone);outline-offset:3px}
+.parcel.drag{cursor:grabbing;transition:none;z-index:5;box-shadow:0 24px 40px rgba(0,0,0,.5)}
+.parcel.armed{outline:3px solid var(--bone)}
+.stage-tools{position:absolute;z-index:4;left:0;right:0;bottom:calc(16px + env(safe-area-inset-bottom,0px));display:flex;justify-content:center}
+
+.explore{background:var(--black)}
+.ex-in{max-width:1100px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left,0px));padding-right:max(16px, env(safe-area-inset-right,0px));
+  padding-block:calc(28px + env(safe-area-inset-top,0px)) calc(48px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:28px;animation:rise .45s cubic-bezier(.2,.8,.2,1) both}
+.ex-in h2{margin:8px 0 0;font-weight:900;font-size:clamp(56px,11vw,150px);line-height:.82;letter-spacing:-.07em}
+.ex-in > div > p{margin:14px 0 0;color:#c9bcbd;max-width:46ch}
+.plist{list-style:none;margin:0;padding:0;border-top:1px solid rgba(239,232,228,.14)}
+.prow{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:grid;grid-template-columns:56px minmax(0,1fr) auto;align-items:center;gap:18px;
+  padding:22px 4px;border-bottom:1px solid rgba(239,232,228,.14);transition:background .25s, padding .25s}
+.prow:hover,.prow:focus-visible{background:rgba(227,18,43,.12);padding-inline:14px}
+.prow:focus-visible{outline:2px solid var(--bone);outline-offset:-2px}
+.pbox{width:52px;height:46px;border-radius:5px;background:#d8c6b8;position:relative;box-shadow:inset 0 -5px 0 rgba(0,0,0,.08)}
+.pbox::before{content:"";position:absolute;left:44%;top:0;bottom:0;width:12%;background:var(--red)}
+.prow h3{margin:0;font-weight:800;font-size:clamp(26px,4vw,48px);letter-spacing:-.05em;line-height:1}
+.prow small{display:block;margin-top:6px;color:var(--mute);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.prow .go-a{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--red);color:var(--bone);font-weight:900;transition:transform .3s}
+.prow:hover .go-a{transform:rotate(-45deg)}
+.ex-tools{display:flex;flex-wrap:wrap;gap:10px}
+
+.sheet{z-index:95;background:var(--bone);color:var(--black)}
+.sheet .x{background:var(--black);color:var(--bone)}
+.sheet-in{max-width:1100px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left,0px));padding-right:max(16px, env(safe-area-inset-right,0px));
+  padding-block:calc(28px + env(safe-area-inset-top,0px)) calc(48px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:26px}
+.sheet .step{color:var(--red)}
+.sheet h1{margin:6px 0 0;font-weight:900;font-size:clamp(56px,11vw,160px);line-height:.82;letter-spacing:-.07em;text-wrap:balance;overflow-wrap:anywhere}
+.tagline{margin:0;font-size:clamp(20px,2.6vw,30px);line-height:1.2;letter-spacing:-.02em;font-weight:500;max-width:30ch;text-wrap:pretty}
+.facts{display:flex;flex-wrap:wrap;gap:8px}
+.facts span{background:var(--black);color:var(--bone);font-weight:800;font-size:14px;letter-spacing:-.01em;padding:10px 14px;border-radius:999px}
+.facts span:first-child{background:var(--red)}
+.sheet-grid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:32px;align-items:start;border-top:2px solid var(--black);padding-top:26px}
+.pbody{display:grid;gap:14px;font-size:17px;line-height:1.55;max-width:62ch}
+.pbody p{margin:0}
+.pside{display:grid;gap:14px;background:#e3d9d5;border-radius:18px;padding:20px}
+.pside dl{margin:0;display:grid;gap:12px}
+.pside dt{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#7a6c6d}
+.pside dd{margin:2px 0 0;font-weight:700;font-size:16px}
+.visit{display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;font-weight:800;font-size:16px;color:var(--bone);background:var(--black);padding:14px 18px;border-radius:999px}
+.visit:hover{background:var(--red)}
+.sheet-nav{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;border-top:2px solid var(--black);padding-top:20px}
+.sheet .ghost{color:var(--black);border-color:rgba(12,11,11,.3)}
+.sheet .ghost:hover{border-color:var(--black)}
+@media (max-width:700px){ .cargo-pos{width:150vw;transform:translateX(-64%)} .parcel{bottom:60%} .parcel span{font-size:11px} }
+@media (max-width:860px){ .sheet-grid{grid-template-columns:1fr} .prow{grid-template-columns:44px minmax(0,1fr) auto;gap:12px} .pbox{width:42px;height:38px} .navlink{padding:10px 8px;font-size:12px} }
+@media (max-width:520px){ .bar-r{gap:4px} .lang button{padding:7px 7px} }
+@media (prefers-reduced-motion:reduce){ .ground,.ex-in,.hint::before{animation:none!important} .parcel{transition:none} }
 </style>
 
 <style>body{margin:0}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
@@ -225,6 +308,7 @@ kbd{font:700 12px/1 var(--font);background:var(--bone);color:var(--black);border
   <div class="bar-in">
     <a class="brand" href="#">eduardfolch.bike<sup>®</sup></a>
     <div class="bar-r">
+      <button class="navlink" id="openExplore" type="button" data-i18n="explore">Explora</button>
       <nav class="lang" aria-label="Idioma">
         <button type="button" data-lang="ca">CA</button>
         <button type="button" data-lang="es">ES</button>
@@ -238,7 +322,7 @@ kbd{font:700 12px/1 var(--font);background:var(--bone);color:var(--black);border
 <!-- ================= MOSAIC ================= -->
 <section class="top">
   <div class="tile t-bone" data-bike="city"></div>
-  <div class="tile t-black" data-bike="cargo"></div>
+  <div class="tile t-black" data-bike="cargo" id="cargoTile" role="button" tabindex="0" aria-label="Cargobike"></div>
   <div class="tile t-ox" data-bike="fold"></div>
   <div class="tile t-flame" aria-hidden="true"></div>
   <div class="band" aria-hidden="true"><div class="track" id="track"></div></div>
@@ -270,6 +354,62 @@ kbd{font:700 12px/1 var(--font);background:var(--bone);color:var(--black);border
     <div class="foot"><span>© 2026</span><span class="num">41.3874° N, 2.1686° E · Barcelona</span></div>
   </div>
 </section>
+
+<!-- ================= CARGOBIKE (projectes) ================= -->
+<div class="ov stage" id="stage" hidden role="dialog" aria-modal="true" aria-labelledby="stageTitle">
+  <button class="x" id="stageClose" type="button" aria-label="Tancar">✕</button>
+  <div class="stage-head">
+    <div>
+      <p class="step" data-i18n="projects">Projectes</p>
+      <h2 id="stageTitle" data-i18n="pullTitle">Treu un paquet de la caixa</h2>
+      <p data-i18n="pullHelp">Arrossega’n un cap amunt o clica’l per obrir el projecte.</p>
+    </div>
+  </div>
+  <div class="ground"></div>
+  <div class="cargo-pos">
+    <div class="cargo" id="cargoInner">
+      <svg class="big" viewBox="0 0 260 130" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" id="bigCargoSvg"></svg>
+      <div id="parcels"></div>
+      <div class="boxfront"><span>eduardfolch.bike</span></div>
+    </div>
+  </div>
+  <div class="stage-tools"><button class="ghost" id="stageList" type="button" data-i18n="seeList">Veure-ho en llista</button></div>
+</div>
+
+<!-- ================= EXPLORA ================= -->
+<div class="ov explore" id="explore" hidden role="dialog" aria-modal="true" aria-labelledby="exTitle">
+  <button class="x" id="exClose" type="button" aria-label="Tancar">✕</button>
+  <div class="ex-in">
+    <div>
+      <p class="step" data-i18n="projects">Projectes</p>
+      <h2 id="exTitle" data-i18n="explore">Explora</h2>
+      <p data-i18n="exIntro">Projectes on he treballat per fer que anar en bici sigui més fàcil, més segur i més habitual.</p>
+    </div>
+    <ul class="plist" id="plist"></ul>
+    <div class="ex-tools"><button class="go" id="exCargo" type="button"><span data-i18n="openCargo">Obre la cargobike</span> →</button></div>
+  </div>
+</div>
+
+<!-- ================= FITXA DE PROJECTE ================= -->
+<div class="ov sheet" id="proj" hidden role="dialog" aria-modal="true" aria-labelledby="pName">
+  <button class="x" id="projClose" type="button" aria-label="Tancar">✕</button>
+  <article class="sheet-in">
+    <div>
+      <p class="step" id="pKind"></p>
+      <h1 id="pName"></h1>
+    </div>
+    <p class="tagline" id="pTag"></p>
+    <div class="facts" id="pFacts"></div>
+    <div class="sheet-grid">
+      <div class="pbody" id="pBody"></div>
+      <aside class="pside" id="pSide"></aside>
+    </div>
+    <nav class="sheet-nav">
+      <button class="ghost" id="pBack" type="button"></button>
+      <button class="go" id="pNext" type="button"></button>
+    </nav>
+  </article>
+</div>
 
 <!-- ================= JOC ================= -->
 <div class="gm" id="gm" hidden role="dialog" aria-modal="true" aria-label="Carril Bici">
@@ -351,7 +491,7 @@ kbd{font:700 12px/1 var(--font);background:var(--bone);color:var(--black);border
 (() => {
 /* ======================= TEXTOS ======================= */
 const T = {
-  ca:{eyebrow:'Contacte', title:'Parlem de bicis.', cta:'Escriu-me', copy:'Copiar', copied:'Copiat', sel:'Seleccionat',
+  ca:{explore:'Explora', projects:'Projectes', tapCargo:'Clica la cargobike', pullTitle:'Treu un paquet de la caixa', pullHelp:'Arrossega’n un cap amunt o clica’l per obrir el projecte.', seeList:'Veure-ho en llista', exIntro:'Projectes on he treballat perquè anar en bici sigui més fàcil, més segur i més habitual.', openCargo:'Obre la cargobike', visit:'Visita el web', nextP:'Següent projecte', backCargo:'Torna a la cargobike', backList:'Torna a la llista', fRole:'El meu paper', fYears:'Anys', fWhere:'On', eyebrow:'Contacte', title:'Parlem de bicis.', cta:'Escriu-me', copy:'Copiar', copied:'Copiat', sel:'Seleccionat',
     tag1:'Sempre sobre dues rodes', tag2:'Passió per la mobilitat amb bicicleta', close:'Tancar',
     step1:'Pas 1 de 2', step2:'Pas 2 de 2', chooseBike:'Escull la bici', chooseMission:'Escull la missió', next:'Següent', back:'Enrere', start:'Comença',
     kLane:'carril', kFast:'accelerar', kBrake:'frenar', kBell:'timbre', kPause:'pausa', space:'Espai',
@@ -366,7 +506,7 @@ const T = {
     win:'Missió completada!', lose:'Missió fallida', rTime:'S’ha acabat el temps.', rLives:'T’has quedat sense vides.', rWin:'Bona pedalada.',
     st1:'Completa la missió', st2:'Sense perdre cap vida', st3:'Cap semàfor en vermell', best:'Rècord', newBest:'Nou rècord!', go:'Som-hi!',
     red:'Semàfor vermell!', civ:'Civisme +150', crash:'Ai!', hole:'Sot!', ring:'Ring ring!', slip:'Rellisca!', turbo:'Turbo!', life:'+1 vida', parcel:'+{n} paquet', smash:'Pam!'},
-  es:{eyebrow:'Contacto', title:'Hablemos de bicis.', cta:'Escríbeme', copy:'Copiar', copied:'Copiado', sel:'Seleccionado',
+  es:{explore:'Explora', projects:'Proyectos', tapCargo:'Pulsa la cargobike', pullTitle:'Saca un paquete de la caja', pullHelp:'Arrastra uno hacia arriba o púlsalo para abrir el proyecto.', seeList:'Verlo en lista', exIntro:'Proyectos en los que he trabajado para que ir en bici sea más fácil, más seguro y más habitual.', openCargo:'Abre la cargobike', visit:'Visita la web', nextP:'Siguiente proyecto', backCargo:'Vuelve a la cargobike', backList:'Vuelve a la lista', fRole:'Mi papel', fYears:'Años', fWhere:'Dónde', eyebrow:'Contacto', title:'Hablemos de bicis.', cta:'Escríbeme', copy:'Copiar', copied:'Copiado', sel:'Seleccionado',
     tag1:'Siempre sobre dos ruedas', tag2:'Pasión por la movilidad en bicicleta', close:'Cerrar',
     step1:'Paso 1 de 2', step2:'Paso 2 de 2', chooseBike:'Elige la bici', chooseMission:'Elige la misión', next:'Siguiente', back:'Atrás', start:'Empezar',
     kLane:'carril', kFast:'acelerar', kBrake:'frenar', kBell:'timbre', kPause:'pausa', space:'Espacio',
@@ -381,7 +521,7 @@ const T = {
     win:'¡Misión completada!', lose:'Misión fallida', rTime:'Se ha acabado el tiempo.', rLives:'Te has quedado sin vidas.', rWin:'Buena pedalada.',
     st1:'Completa la misión', st2:'Sin perder ninguna vida', st3:'Ningún semáforo en rojo', best:'Récord', newBest:'¡Nuevo récord!', go:'¡Vamos!',
     red:'¡Semáforo en rojo!', civ:'Civismo +150', crash:'¡Ay!', hole:'¡Bache!', ring:'¡Ring ring!', slip:'¡Resbala!', turbo:'¡Turbo!', life:'+1 vida', parcel:'+{n} paquete', smash:'¡Pam!'},
-  en:{eyebrow:'Contact', title:'Let’s talk bikes.', cta:'Write to me', copy:'Copy', copied:'Copied', sel:'Selected',
+  en:{explore:'Explore', projects:'Projects', tapCargo:'Tap the cargo bike', pullTitle:'Pull a parcel out of the box', pullHelp:'Drag one upwards or tap it to open the project.', seeList:'See as a list', exIntro:'Projects I’ve worked on to make cycling easier, safer and more everyday.', openCargo:'Open the cargo bike', visit:'Visit the website', nextP:'Next project', backCargo:'Back to the cargo bike', backList:'Back to the list', fRole:'My role', fYears:'Years', fWhere:'Where', eyebrow:'Contact', title:'Let’s talk bikes.', cta:'Write to me', copy:'Copy', copied:'Copied', sel:'Selected',
     tag1:'Always on two wheels', tag2:'A passion for getting around by bike', close:'Close',
     step1:'Step 1 of 2', step2:'Step 2 of 2', chooseBike:'Choose your bike', chooseMission:'Choose a mission', next:'Next', back:'Back', start:'Start',
     kLane:'lane', kFast:'speed up', kBrake:'brake', kBell:'bell', kPause:'pause', space:'Space',
@@ -543,7 +683,7 @@ function openGame(){
   setTimeout(()=>$('bikeCards').querySelector('[aria-pressed="true"]')?.focus(), 50);
 }
 function closeGame(){
-  gm.hidden=true; document.documentElement.style.overflow=''; running=false; state='menu'; gm.classList.remove('playing');
+  gm.hidden=true; document.documentElement.style.overflow=(typeof ovStack!=='undefined' && ovStack.length)?'hidden':''; running=false; state='menu'; gm.classList.remove('playing');
   $('openGame').focus();
 }
 function startGame(){ audio(); newGame(); state='count'; show(null); gm.classList.add('playing'); hud(true); }
@@ -1027,6 +1167,197 @@ function drawRider(x,y,tilt,kind){
   ctx.restore();
 }
 
+/* ======================= PROJECTES ======================= */
+const PROJECTS = [
+  { id:'bicibus', url:'https://bicibus.eu', years:'2020 –',
+    ca:{name:'Bicibús.eu', short:'Bicibús.eu', kind:'Plataforma · metodologia · app', role:'Impulsor de BicibúsLAB', where:'Catalunya i Europa',
+        tag:'Infants que van a l’escola pedalant junts, amb ruta, parades i horari, com un autobús.',
+        body:['El bicibús és un grup d’infants i famílies que fan el camí a l’escola en bicicleta per una ruta fixa, amb parades i horaris. Fa el carrer més segur, dona autonomia als infants i omple de bicis l’entrada de l’escola.',
+              'BicibúsLAB recull l’experiència dels bicibusos de Catalunya i l’ofereix a escoles, AFA i ajuntaments que en volen posar un en marxa. Hem creat una metodologia i una app per organitzar les rutes, que ja han ajudat a impulsar més de 40 rutes en 30 escoles.',
+              'És un projecte multidisciplinari, fet amb les cooperatives CUBIC i WHATIF.'],
+        facts:['40+ rutes','30 escoles','App pròpia']},
+    es:{name:'Bicibús.eu', short:'Bicibús.eu', kind:'Plataforma · metodología · app', role:'Impulsor de BicibúsLAB', where:'Cataluña y Europa',
+        tag:'Niños y niñas que van al colegio pedaleando juntos, con ruta, paradas y horario, como un autobús.',
+        body:['El bicibús es un grupo de niños y familias que hacen el camino al colegio en bicicleta por una ruta fija, con paradas y horarios. Hace la calle más segura, da autonomía a los niños y llena de bicis la entrada del colegio.',
+              'BicibúsLAB recoge la experiencia de los bicibuses de Cataluña y la ofrece a colegios, AMPA y ayuntamientos que quieren poner uno en marcha. Hemos creado una metodología y una app para organizar las rutas, que ya han ayudado a impulsar más de 40 rutas en 30 colegios.',
+              'Es un proyecto multidisciplinar, hecho con las cooperativas CUBIC y WHATIF.'],
+        facts:['40+ rutas','30 colegios','App propia']},
+    en:{name:'Bicibús.eu', short:'Bicibús.eu', kind:'Platform · method · app', role:'Founder of BicibúsLAB', where:'Catalonia and Europe',
+        tag:'Children riding to school together, with a route, stops and a timetable, just like a bus.',
+        body:['A bike bus is a group of children and families who ride to school along a fixed route with stops and times. It makes the street safer, gives children independence and fills the school gate with bikes.',
+              'BicibúsLAB gathers the experience of bike buses across Catalonia and shares it with schools, parent associations and councils that want to start one. We built a method and an app to organise routes, which have already helped launch more than 40 routes at 30 schools.',
+              'It is a multidisciplinary project, made with the cooperatives CUBIC and WHATIF.'],
+        facts:['40+ routes','30 schools','Own app']} },
+  { id:'guia', url:'', years:'',
+    ca:{name:'Guia de mobilitat escolar', short:'Guia mobilitat escolar', kind:'Guia pràctica', role:'', where:'Escoles i municipis',
+        tag:'Com fer que anar a l’escola a peu o en bici sigui segur, saludable i habitual.',
+        body:['Una guia pas a pas per a escoles, famílies i ajuntaments que volen canviar la manera d’arribar a l’escola.',
+              'Explica com analitzar els camins escolars, detectar els punts perillosos i proposar millores a l’entorn de l’escola. També recull iniciatives com el bicibús i el pedibús, i eines per implicar alumnat, famílies, escola i ajuntament.'],
+        facts:['Camins escolars','Bicibús i pedibús','Entorns segurs']},
+    es:{name:'Guía de movilidad escolar', short:'Guía movilidad escolar', kind:'Guía práctica', role:'', where:'Colegios y municipios',
+        tag:'Cómo hacer que ir al colegio a pie o en bici sea seguro, saludable y habitual.',
+        body:['Una guía paso a paso para colegios, familias y ayuntamientos que quieren cambiar la forma de llegar al colegio.',
+              'Explica cómo analizar los caminos escolares, detectar los puntos peligrosos y proponer mejoras en el entorno del colegio. También recoge iniciativas como el bicibús y el pedibús, y herramientas para implicar al alumnado, las familias, el colegio y el ayuntamiento.'],
+        facts:['Caminos escolares','Bicibús y pedibús','Entornos seguros']},
+    en:{name:'School mobility guide', short:'School mobility guide', kind:'Practical guide', role:'', where:'Schools and towns',
+        tag:'How to make walking and cycling to school safe, healthy and normal.',
+        body:['A step-by-step guide for schools, families and councils that want to change how children get to school.',
+              'It explains how to map school routes, spot dangerous points and propose improvements around the school. It also covers initiatives like bike buses and walking buses, and tools to involve pupils, families, the school and the council.'],
+        facts:['School routes','Bike & walking buses','Safe streets']} },
+  { id:'osona', url:'', years:'',
+    ca:{name:'Osona amb Bici', short:'Osona amb Bici', kind:'Entitat', role:'President', where:'Osona',
+        tag:'La bicicleta com a mitjà de transport de cada dia a la comarca d’Osona.',
+        body:['Osona amb Bici és l’entitat que promou l’ús quotidià de la bicicleta a Osona.',
+              'Treballa perquè anar en bici per la comarca sigui fàcil i segur, i perquè la bicicleta tingui el lloc que li toca en la mobilitat de pobles i ciutats.'],
+        facts:['Osona','Mobilitat quotidiana']},
+    es:{name:'Osona amb Bici', short:'Osona amb Bici', kind:'Asociación', role:'Presidente', where:'Osona',
+        tag:'La bicicleta como medio de transporte diario en la comarca de Osona.',
+        body:['Osona amb Bici es la asociación que promueve el uso diario de la bicicleta en Osona.',
+              'Trabaja para que ir en bici por la comarca sea fácil y seguro, y para que la bicicleta tenga el lugar que le corresponde en la movilidad de pueblos y ciudades.'],
+        facts:['Osona','Movilidad diaria']},
+    en:{name:'Osona amb Bici', short:'Osona amb Bici', kind:'Association', role:'President', where:'Osona, Catalonia',
+        tag:'The bicycle as everyday transport across the Osona region.',
+        body:['Osona amb Bici is the association that promotes everyday cycling in Osona.',
+              'It works to make riding around the region easy and safe, and to give the bicycle its rightful place in how towns and cities move.'],
+        facts:['Osona','Everyday cycling']} }
+];
+const pj = (p) => p[lang];
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* --- capes --- */
+const OV = {stage:$('stage'), explore:$('explore'), proj:$('proj')};
+let ovStack = [], currentProj = null, projFrom = null;
+function lockScroll(){ document.documentElement.style.overflow = (ovStack.length || !gm.hidden) ? 'hidden' : ''; }
+function setHash(h){ try{ history.replaceState(null,'', h ? '#'+h : location.pathname + location.search); }catch(e){} }
+function openOv(name){
+  if(!ovStack.includes(name)) ovStack.push(name);
+  OV[name].hidden = false; OV[name].scrollTop = 0; lockScroll();
+}
+function closeOv(name){
+  OV[name].hidden = true; ovStack = ovStack.filter(n => n!==name); lockScroll();
+  const top = ovStack[ovStack.length-1];
+  setHash(top==='proj' ? currentProj : top==='stage' ? 'cargo' : top || '');
+}
+
+/* --- cargobike --- */
+$('bigCargoSvg').innerHTML = `
+  ${wheel(36,94,30)}${wheel(214,104,20)}
+  <path d="M134 58 h104 v40 h-104 z" fill="#2a0a0f" stroke="currentColor"/>
+  <path d="M36 94 L84 94 L72 44 Z M84 94 L120 70 L134 74 M120 70 L126 48"/>
+  <path d="M238 98 L214 104"/>
+  <path stroke="#e3122b" d="M72 44 L68 32 M56 30 L80 30 M126 48 L122 30 L138 28"/>
+  <g class="crank"><circle cx="84" cy="94" r="7"/><path d="M84 94 v13 M84 94 v-13"/></g>`;
+function renderParcels(){
+  const pos=[[53.5,'-6deg'],[66,'4deg'],[78.5,'-3deg']];
+  $('parcels').innerHTML = PROJECTS.map((p,i)=>`<button class="parcel" type="button" data-p="${p.id}" style="left:${pos[i%3][0]}%;--r:${pos[i%3][1]};transition-delay:${.55+i*.12}s"><span>${pj(p).short}</span></button>`).join('');
+  $('parcels').querySelectorAll('.parcel').forEach(dragParcel);
+}
+function dragParcel(el){
+  let sx=0, sy=0, dx=0, dy=0, down=false, armed=false;
+  el.addEventListener('pointerdown', e => { down=true; sx=e.clientX; sy=e.clientY; dx=dy=0; armed=false; el.setPointerCapture(e.pointerId); el.style.transitionDelay='0s'; });
+  el.addEventListener('pointermove', e => {
+    if(!down) return; dx=e.clientX-sx; dy=e.clientY-sy;
+    if(Math.hypot(dx,dy)>5){ el.classList.add('drag'); el.style.transform=`translate(${dx}px,${dy}px) rotate(${dx*.05}deg)`; }
+    armed = dy < -50 || Math.hypot(dx,dy) > 110; el.classList.toggle('armed', armed);
+  });
+  const up = e => {
+    if(!down) return; down=false; el.classList.remove('drag','armed');
+    const dist=Math.hypot(dx,dy);
+    if(dist<6 || armed){ launch(el); }
+    else { el.animate([{transform:el.style.transform},{transform:'none'}],{duration:350,easing:'cubic-bezier(.3,1.5,.5,1)'}); el.style.transform=''; }
+  };
+  el.addEventListener('pointerup', up); el.addEventListener('pointercancel', up);
+  el.addEventListener('click', e => { if(e.detail===0) launch(el); }); // teclat
+}
+function launch(el){
+  const r = el.getBoundingClientRect(), id = el.dataset.p;
+  const from = el.style.transform || 'none';
+  if(!reduceMotion) el.animate([{transform:from, opacity:1},{transform:from+' translateY(-140px) scale(1.5) rotate(-8deg)', opacity:0}],{duration:420,easing:'cubic-bezier(.5,0,.5,1)'});
+  tone(784,.12,'triangle',.12); tone(1175,.18,'triangle',.12,.08);
+  setTimeout(()=>{ el.style.transform=''; openProject(id, {x:r.left+r.width/2, y:r.top+r.height/2}, 'stage'); }, reduceMotion?0:300);
+}
+function openCargo(fromEl){
+  audio();
+  renderParcels(); OV.stage.classList.remove('in'); openOv('stage'); setHash('cargo');
+  const inner = $('cargoInner');
+  const src = fromEl?.querySelector('svg');
+  if(src && !reduceMotion){
+    const a=src.getBoundingClientRect(), b=inner.getBoundingClientRect();
+    const s=a.width/b.width, dx=(a.left+a.width/2)-(b.left+b.width/2), dy=(a.top+a.height/2)-(b.top+b.height/2);
+    inner.animate([{transform:`translate(${dx}px,${dy}px) scale(${s})`},{transform:'translate(0,0) scale(1.04)',offset:.8},{transform:'none'}],{duration:950,easing:'cubic-bezier(.2,.8,.2,1)'});
+  }
+  requestAnimationFrame(()=>requestAnimationFrame(()=>OV.stage.classList.add('in')));
+  $('stageClose').focus({preventScroll:true});
+}
+
+/* --- explora --- */
+function renderExplore(){
+  $('plist').innerHTML = PROJECTS.map(p => { const d=pj(p); return `<li><button class="prow" type="button" data-p="${p.id}">
+    <span class="pbox" aria-hidden="true"></span><span><h3>${d.name}</h3><small>${[d.kind, d.role].filter(Boolean).join(' · ')}</small></span><span class="go-a" aria-hidden="true">→</span></button></li>`; }).join('');
+  $('plist').querySelectorAll('.prow').forEach(b => b.addEventListener('click', e => openProject(b.dataset.p, {x:e.clientX||innerWidth/2, y:e.clientY||innerHeight/2}, 'explore')));
+}
+function openExplore(){ renderExplore(); openOv('explore'); setHash('explora'); $('exClose').focus({preventScroll:true}); }
+
+/* --- fitxa --- */
+function openProject(id, origin, from){
+  const p = PROJECTS.find(x=>x.id===id); if(!p) return;
+  currentProj=id; if(from) projFrom=from;
+  fillProject(p);
+  openOv('proj'); setHash(id);
+  if(origin && !reduceMotion){
+    const R = Math.hypot(Math.max(origin.x, innerWidth-origin.x), Math.max(origin.y, innerHeight-origin.y));
+    OV.proj.animate([{clipPath:`circle(0px at ${origin.x}px ${origin.y}px)`},{clipPath:`circle(${R}px at ${origin.x}px ${origin.y}px)`}],{duration:650,easing:'cubic-bezier(.7,0,.2,1)'});
+  }
+  $('projClose').focus({preventScroll:true});
+}
+function fillProject(p){
+  const d=pj(p), t=T[lang];
+  $('pKind').textContent = [d.kind, p.years].filter(Boolean).join(' · ');
+  $('pName').textContent = d.name;
+  $('pTag').textContent = d.tag;
+  $('pFacts').innerHTML = d.facts.map(f=>`<span>${f}</span>`).join('');
+  $('pBody').innerHTML = d.body.map(x=>`<p>${x}</p>`).join('');
+  const rows = [[t.fRole,d.role],[t.fYears,p.years],[t.fWhere,d.where]].filter(r=>r[1]);
+  $('pSide').innerHTML = `<dl>${rows.map(r=>`<div><dt>${r[0]}</dt><dd>${r[1]}</dd></div>`).join('')}</dl>` +
+    (p.url ? `<a class="visit" href="${p.url}" target="_blank" rel="noopener">${t.visit} ↗</a>` : '');
+  $('pSide').hidden = !rows.length && !p.url;
+  $('pBack').textContent = '← ' + (projFrom==='stage' ? t.backCargo : t.backList);
+  const next = PROJECTS[(PROJECTS.indexOf(p)+1)%PROJECTS.length];
+  $('pNext').textContent = `${t.nextP}: ${pj(next).name} →`;
+  $('pNext').dataset.p = next.id;
+}
+$('pNext').addEventListener('click', () => { const r=$('pNext').getBoundingClientRect(); OV.proj.scrollTop=0; openProject($('pNext').dataset.p, {x:r.left+r.width/2, y:r.top+r.height/2}); });
+$('pBack').addEventListener('click', () => { closeOv('proj'); if(projFrom==='explore' && OV.explore.hidden) openExplore(); if(projFrom==='stage' && OV.stage.hidden) openCargo(); });
+$('projClose').addEventListener('click', () => closeOv('proj'));
+$('stageClose').addEventListener('click', () => { closeOv('stage'); $('cargoTile').focus({preventScroll:true}); });
+$('exClose').addEventListener('click', () => closeOv('explore'));
+$('stageList').addEventListener('click', () => { closeOv('stage'); openExplore(); });
+$('exCargo').addEventListener('click', () => { closeOv('explore'); openCargo(); });
+$('openExplore').addEventListener('click', openExplore);
+const tile=$('cargoTile');
+tile.insertAdjacentHTML('afterbegin', '<span class="hint" data-i18n="tapCargo">Clica la cargobike</span>');
+tile.addEventListener('click', () => openCargo(tile));
+tile.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openCargo(tile); } });
+addEventListener('keydown', e => {
+  if(!gm.hidden || e.key!=='Escape' || !ovStack.length) return;
+  const top = ovStack[ovStack.length-1];
+  if(top==='stage') $('stageClose').click(); else closeOv(top);
+});
+function rerenderOverlays(){
+  if(!OV.stage.hidden){ renderParcels(); OV.stage.classList.add('in'); }
+  if(!OV.explore.hidden) renderExplore();
+  if(!OV.proj.hidden && currentProj) fillProject(PROJECTS.find(x=>x.id===currentProj));
+}
+// obrir des de l'enllaç
+function fromHash(){
+  const h = (location.hash||'').slice(1);
+  if(h==='explora') openExplore();
+  else if(h==='cargo') openCargo();
+  else if(PROJECTS.some(p=>p.id===h) && currentProj!==h){ projFrom='explore'; openProject(h); }
+}
+setTimeout(fromHash, 60);
+addEventListener('hashchange', fromHash);
+
 /* ======================= IDIOMA ======================= */
 function render(){
   const t=T[lang];
@@ -1040,6 +1371,8 @@ function render(){
     <span class="mark">eduardfolch.bike<sup>®</sup></span><span class="meta"><b>${t.tag1}</b>${t.tag2}</span><span class="meta num"><b>41.3874° N, 2.1686° E</b>Barcelona</span></div>`;
   $('track').innerHTML=g+g;
   if(!gm.hidden){ renderCards(); hud(true); }
+  if(typeof rerenderOverlays==='function') rerenderOverlays();
+  document.querySelectorAll('.ov .x').forEach(b=>b.setAttribute('aria-label', t.close));
 }
 document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => {
   lang=b.dataset.lang; try{ localStorage.setItem('efb-lang',lang); }catch(e){} render();
