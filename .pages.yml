@@ -1,0 +1,283 @@
+# Configuració de Pages CMS (https://app.pagescms.org)
+# Edita els textos del web eduardfolch.bike sense tocar el codi.
+content:
+  - name: web
+    label: Textos del web
+    type: file
+    path: content.json
+    format: json
+    fields:
+      - name: contact
+        label: Contacte
+        type: object
+        fields:
+          - name: email
+            label: Correu de contacte
+            type: string
+            required: true
+      - name: site
+        label: Textos generals
+        type: object
+        fields:
+          - name: ca
+            label: Català
+            type: object
+            fields:
+              - name: explore
+                label: "Menú: Explora"
+                type: string
+              - name: projects
+                label: "Etiqueta «Projectes»"
+                type: string
+              - name: title
+                label: "Contacte: titular"
+                type: string
+              - name: eyebrow
+                label: "Contacte: etiqueta petita"
+                type: string
+              - name: cta
+                label: "Contacte: text del botó"
+                type: string
+              - name: tag1
+                label: "Banda vermella: frase 1"
+                type: string
+              - name: tag2
+                label: "Banda vermella: frase 2"
+                type: string
+              - name: tapCargo
+                label: "Home: etiqueta de la cargobike"
+                type: string
+              - name: pullTitle
+                label: "Cargobike: titular"
+                type: string
+              - name: pullHelp
+                label: "Cargobike: instruccions"
+                type: text
+              - name: seeList
+                label: "Cargobike: botó «veure en llista»"
+                type: string
+              - name: exIntro
+                label: "Explora: text d’introducció"
+                type: text
+              - name: openCargo
+                label: "Explora: botó «obre la cargobike»"
+                type: string
+              - name: visit
+                label: "Fitxa: botó «visita el web»"
+                type: string
+          - name: es
+            label: Castellano
+            type: object
+            fields:
+              - name: explore
+                label: "Menú: Explora"
+                type: string
+              - name: projects
+                label: "Etiqueta «Projectes»"
+                type: string
+              - name: title
+                label: "Contacte: titular"
+                type: string
+              - name: eyebrow
+                label: "Contacte: etiqueta petita"
+                type: string
+              - name: cta
+                label: "Contacte: text del botó"
+                type: string
+              - name: tag1
+                label: "Banda vermella: frase 1"
+                type: string
+              - name: tag2
+                label: "Banda vermella: frase 2"
+                type: string
+              - name: tapCargo
+                label: "Home: etiqueta de la cargobike"
+                type: string
+              - name: pullTitle
+                label: "Cargobike: titular"
+                type: string
+              - name: pullHelp
+                label: "Cargobike: instruccions"
+                type: text
+              - name: seeList
+                label: "Cargobike: botó «veure en llista»"
+                type: string
+              - name: exIntro
+                label: "Explora: text d’introducció"
+                type: text
+              - name: openCargo
+                label: "Explora: botó «obre la cargobike»"
+                type: string
+              - name: visit
+                label: "Fitxa: botó «visita el web»"
+                type: string
+          - name: en
+            label: English
+            type: object
+            fields:
+              - name: explore
+                label: "Menú: Explora"
+                type: string
+              - name: projects
+                label: "Etiqueta «Projectes»"
+                type: string
+              - name: title
+                label: "Contacte: titular"
+                type: string
+              - name: eyebrow
+                label: "Contacte: etiqueta petita"
+                type: string
+              - name: cta
+                label: "Contacte: text del botó"
+                type: string
+              - name: tag1
+                label: "Banda vermella: frase 1"
+                type: string
+              - name: tag2
+                label: "Banda vermella: frase 2"
+                type: string
+              - name: tapCargo
+                label: "Home: etiqueta de la cargobike"
+                type: string
+              - name: pullTitle
+                label: "Cargobike: titular"
+                type: string
+              - name: pullHelp
+                label: "Cargobike: instruccions"
+                type: text
+              - name: seeList
+                label: "Cargobike: botó «veure en llista»"
+                type: string
+              - name: exIntro
+                label: "Explora: text d’introducció"
+                type: text
+              - name: openCargo
+                label: "Explora: botó «obre la cargobike»"
+                type: string
+              - name: visit
+                label: "Fitxa: botó «visita el web»"
+                type: string
+      - name: projects
+        label: Projectes (paquets de la cargobike)
+        type: object
+        list: true
+        fields:
+          - name: id
+            label: Identificador
+            description: "Per a l’enllaç directe (eduardfolch.bike/#id). Minúscules, sense espais ni accents."
+            type: string
+            required: true
+            pattern: ^[a-z0-9-]+$
+          - name: url
+            label: Enllaç del projecte
+            description: Opcional. Comença per https://
+            type: string
+          - name: years
+            label: Anys
+            description: "Ex.: 2020 –"
+            type: string
+          - name: ca
+            label: Català
+            type: object
+            fields:
+              - name: name
+                label: "Nom"
+                type: string
+                required: true
+              - name: short
+                label: "Nom curt (etiqueta del paquet)"
+                type: string
+              - name: kind
+                label: "Tipus de projecte"
+                type: string
+                description: "Ex.: Plataforma · metodologia · app"
+              - name: role
+                label: "El meu paper"
+                type: string
+                description: "Deixa-ho buit si no vols mostrar-ho"
+              - name: where
+                label: "On"
+                type: string
+              - name: tag
+                label: "Frase resum"
+                type: text
+              - name: body
+                label: "Paràgrafs"
+                type: text
+                description: "Cada element és un paràgraf"
+                list: true
+              - name: facts
+                label: "Xifres o etiquetes destacades"
+                type: string
+                description: "Ex.: 40+ rutes"
+                list: true
+          - name: es
+            label: Castellano
+            type: object
+            fields:
+              - name: name
+                label: "Nom"
+                type: string
+                required: true
+              - name: short
+                label: "Nom curt (etiqueta del paquet)"
+                type: string
+              - name: kind
+                label: "Tipus de projecte"
+                type: string
+                description: "Ex.: Plataforma · metodologia · app"
+              - name: role
+                label: "El meu paper"
+                type: string
+                description: "Deixa-ho buit si no vols mostrar-ho"
+              - name: where
+                label: "On"
+                type: string
+              - name: tag
+                label: "Frase resum"
+                type: text
+              - name: body
+                label: "Paràgrafs"
+                type: text
+                description: "Cada element és un paràgraf"
+                list: true
+              - name: facts
+                label: "Xifres o etiquetes destacades"
+                type: string
+                description: "Ex.: 40+ rutes"
+                list: true
+          - name: en
+            label: English
+            type: object
+            fields:
+              - name: name
+                label: "Nom"
+                type: string
+                required: true
+              - name: short
+                label: "Nom curt (etiqueta del paquet)"
+                type: string
+              - name: kind
+                label: "Tipus de projecte"
+                type: string
+                description: "Ex.: Plataforma · metodologia · app"
+              - name: role
+                label: "El meu paper"
+                type: string
+                description: "Deixa-ho buit si no vols mostrar-ho"
+              - name: where
+                label: "On"
+                type: string
+              - name: tag
+                label: "Frase resum"
+                type: text
+              - name: body
+                label: "Paràgrafs"
+                type: text
+                description: "Cada element és un paràgraf"
+                list: true
+              - name: facts
+                label: "Xifres o etiquetes destacades"
+                type: string
+                description: "Ex.: 40+ rutes"
+                list: true

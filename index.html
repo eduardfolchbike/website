@@ -1221,6 +1221,7 @@ const PROJECTS = [
               'It works to make riding around the region easy and safe, and to give the bicycle its rightful place in how towns and cities move.'],
         facts:['Osona','Everyday cycling']} }
 ];
+const esc = v => String(v??'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const pj = (p) => p[lang];
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -1248,8 +1249,9 @@ $('bigCargoSvg').innerHTML = `
   <path stroke="#e3122b" d="M72 44 L68 32 M56 30 L80 30 M126 48 L122 30 L138 28"/>
   <g class="crank"><circle cx="84" cy="94" r="7"/><path d="M84 94 v13 M84 94 v-13"/></g>`;
 function renderParcels(){
-  const pos=[[53.5,'-6deg'],[66,'4deg'],[78.5,'-3deg']];
-  $('parcels').innerHTML = PROJECTS.map((p,i)=>`<button class="parcel" type="button" data-p="${p.id}" style="left:${pos[i%3][0]}%;--r:${pos[i%3][1]};transition-delay:${.55+i*.12}s"><span>${pj(p).short}</span></button>`).join('');
+  const n=PROJECTS.length, w=n<=3?12.5:Math.max(7.5,36/n), start=53, end=90.5-w, rots=['-6deg','4deg','-3deg','5deg','-2deg'];
+  $('parcels').innerHTML = PROJECTS.map((p,i)=>{ const left = n===1 ? (start+end)/2 : start + i*(end-start)/(n-1);
+    return `<button class="parcel" type="button" data-p="${esc(p.id)}" style="left:${left.toFixed(2)}%;width:${w}%;--r:${rots[i%5]};transition-delay:${.55+i*.1}s"><span>${esc(pj(p).short)}</span></button>`; }).join('');
   $('parcels').querySelectorAll('.parcel').forEach(dragParcel);
 }
 function dragParcel(el){
@@ -1293,7 +1295,7 @@ function openCargo(fromEl){
 /* --- explora --- */
 function renderExplore(){
   $('plist').innerHTML = PROJECTS.map(p => { const d=pj(p); return `<li><button class="prow" type="button" data-p="${p.id}">
-    <span class="pbox" aria-hidden="true"></span><span><h3>${d.name}</h3><small>${[d.kind, d.role].filter(Boolean).join(' · ')}</small></span><span class="go-a" aria-hidden="true">→</span></button></li>`; }).join('');
+    <span class="pbox" aria-hidden="true"></span><span><h3>${esc(d.name)}</h3><small>${esc([d.kind, d.role].filter(Boolean).join(' · '))}</small></span><span class="go-a" aria-hidden="true">→</span></button></li>`; }).join('');
   $('plist').querySelectorAll('.prow').forEach(b => b.addEventListener('click', e => openProject(b.dataset.p, {x:e.clientX||innerWidth/2, y:e.clientY||innerHeight/2}, 'explore')));
 }
 function openExplore(){ renderExplore(); openOv('explore'); setHash('explora'); $('exClose').focus({preventScroll:true}); }
@@ -1315,11 +1317,11 @@ function fillProject(p){
   $('pKind').textContent = [d.kind, p.years].filter(Boolean).join(' · ');
   $('pName').textContent = d.name;
   $('pTag').textContent = d.tag;
-  $('pFacts').innerHTML = d.facts.map(f=>`<span>${f}</span>`).join('');
-  $('pBody').innerHTML = d.body.map(x=>`<p>${x}</p>`).join('');
+  $('pFacts').innerHTML = d.facts.map(f=>`<span>${esc(f)}</span>`).join('');
+  $('pBody').innerHTML = d.body.map(x=>`<p>${esc(x)}</p>`).join('');
   const rows = [[t.fRole,d.role],[t.fYears,p.years],[t.fWhere,d.where]].filter(r=>r[1]);
-  $('pSide').innerHTML = `<dl>${rows.map(r=>`<div><dt>${r[0]}</dt><dd>${r[1]}</dd></div>`).join('')}</dl>` +
-    (p.url ? `<a class="visit" href="${p.url}" target="_blank" rel="noopener">${t.visit} ↗</a>` : '');
+  $('pSide').innerHTML = `<dl>${rows.map(r=>`<div><dt>${esc(r[0])}</dt><dd>${esc(r[1])}</dd></div>`).join('')}</dl>` +
+    (/^https?:\/\//.test(p.url||'') ? `<a class="visit" href="${esc(p.url)}" target="_blank" rel="noopener">${t.visit} ↗</a>` : '');
   $('pSide').hidden = !rows.length && !p.url;
   $('pBack').textContent = '← ' + (projFrom==='stage' ? t.backCargo : t.backList);
   const next = PROJECTS[(PROJECTS.indexOf(p)+1)%PROJECTS.length];
@@ -1367,8 +1369,8 @@ function render(){
   $('closeGame').setAttribute('aria-label', t.close);
   gm.setAttribute('aria-label', t.m_deliver ? (lang==='en'?'Bike Lane':'Carril Bici') : '');
   const g=`<div class="group">
-    <span class="mark">eduardfolch.bike<sup>®</sup></span><span class="meta"><b>${t.tag1}</b>${t.tag2}</span><span class="meta num"><b>41.3874° N, 2.1686° E</b>Barcelona</span>
-    <span class="mark">eduardfolch.bike<sup>®</sup></span><span class="meta"><b>${t.tag1}</b>${t.tag2}</span><span class="meta num"><b>41.3874° N, 2.1686° E</b>Barcelona</span></div>`;
+    <span class="mark">eduardfolch.bike<sup>®</sup></span><span class="meta"><b>${esc(t.tag1)}</b>${esc(t.tag2)}</span><span class="meta num"><b>41.3874° N, 2.1686° E</b>Barcelona</span>
+    <span class="mark">eduardfolch.bike<sup>®</sup></span><span class="meta"><b>${esc(t.tag1)}</b>${esc(t.tag2)}</span><span class="meta num"><b>41.3874° N, 2.1686° E</b>Barcelona</span></div>`;
   $('track').innerHTML=g+g;
   if(!gm.hidden){ renderCards(); hud(true); }
   if(typeof rerenderOverlays==='function') rerenderOverlays();
@@ -1378,6 +1380,32 @@ document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click
   lang=b.dataset.lang; try{ localStorage.setItem('efb-lang',lang); }catch(e){} render();
 }));
 render();
+
+/* ======================= CONTINGUT EDITABLE (content.json, Pages CMS) ======================= */
+function applyContent(c){
+  if(!c || typeof c!=='object') return;
+  if(c.site) for(const l of ['ca','es','en']) if(c.site[l]) for(const k in c.site[l]){ const v=c.site[l][k]; if(typeof v==='string' && v.trim()) T[l][k]=v; }
+  const mail = c.contact && typeof c.contact.email==='string' && c.contact.email.includes('@') ? c.contact.email.trim() : null;
+  if(mail){ $('addr').textContent=mail; document.querySelector('.contact .btn').href='mailto:'+mail+'?subject=eduardfolch.bike'; }
+  if(Array.isArray(c.projects)){
+    const ok = c.projects.filter(p => p && p.id && ['ca','es','en'].some(l => p[l] && p[l].name)).map(p => {
+      const out = {id:String(p.id), url:p.url||'', years:p.years||''};
+      const base = ['ca','es','en'].map(l=>p[l]).find(d=>d && d.name);
+      for(const l of ['ca','es','en']){
+        const d = Object.assign({}, base, p[l]||{});
+        out[l] = {name:d.name||'', short:d.short||d.name||'', kind:d.kind||'', role:d.role||'', where:d.where||'', tag:d.tag||'',
+                  body:(Array.isArray(d.body)?d.body:[d.body]).filter(Boolean), facts:(Array.isArray(d.facts)?d.facts:[]).filter(Boolean)};
+      }
+      return out;
+    });
+    if(ok.length) PROJECTS.splice(0, PROJECTS.length, ...ok);
+  }
+  render();
+  fromHash();
+}
+if(location.protocol.startsWith('http')){
+  fetch('content.json', {cache:'no-cache'}).then(r => r.ok ? r.json() : null).then(applyContent).catch(()=>{});
+}
 
 /* ======================= COPIAR ======================= */
 const btn=$('copy');

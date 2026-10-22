@@ -1,10 +1,17 @@
 # eduardfolch.bike
 
-Web personal d'Eduard Folch en català, castellà i anglès, amb el joc **Carril Bici** integrat (botó *Play game* a la barra superior).
+Web personal d'Eduard Folch en català, castellà i anglès, amb el joc **Carril Bici** (botó *Play game*), la secció **Explora** i la cargobike amb paquets de projectes.
 
-- Tot el web és un sol fitxer: `index.html` (HTML, CSS i JavaScript, sense dependències).
-- Contacte: hola@eduardfolch.bike
+## Fitxers
+- `index.html`: el web sencer (HTML, CSS i JavaScript, sense dependències).
+- `content.json`: textos editables, correu de contacte i projectes. Si falta o té errors, el web mostra els textos per defecte.
+- `.pages.yml`: configuració de l'admin Pages CMS.
+- `CNAME`: domini eduardfolch.bike (GitHub Pages).
 
-## Publicar amb GitHub Pages
+## Editar els textos (admin)
+1. Entra a https://app.pagescms.org i inicia sessió amb GitHub.
+2. Instal·la la GitHub App de Pages CMS al repositori `website` (només cal la primera vegada).
+3. Obre el repositori → **Textos del web**, canvia el que vulguis i desa.
+4. Cada desament fa un commit a `main` i GitHub Pages publica el canvi en 1-2 minuts.
 
-Settings → Pages → *Deploy from a branch* → `main` / `(root)`.
+Per afegir un projecte nou: a **Projectes**, afegeix un element, posa-li un identificador (ex. `canvis-en-cadena`) i omple com a mínim el nom en un idioma. Apareixerà com a paquet a la cargobike, a Explora i a `eduardfolch.bike/#identificador`.

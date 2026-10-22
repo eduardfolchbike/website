@@ -1,0 +1,225 @@
+{
+  "site": {
+    "ca": {
+      "explore": "Explora",
+      "projects": "Projectes",
+      "eyebrow": "Contacte",
+      "title": "Parlem de bicis.",
+      "cta": "Escriu-me",
+      "tag1": "Sempre sobre dues rodes",
+      "tag2": "Passió per la mobilitat amb bicicleta",
+      "tapCargo": "Clica la cargobike",
+      "pullTitle": "Treu un paquet de la caixa",
+      "pullHelp": "Arrossega’n un cap amunt o clica’l per obrir el projecte.",
+      "seeList": "Veure-ho en llista",
+      "exIntro": "Projectes on he treballat perquè anar en bici sigui més fàcil, més segur i més habitual.",
+      "openCargo": "Obre la cargobike",
+      "visit": "Visita el web"
+    },
+    "es": {
+      "explore": "Explora",
+      "projects": "Proyectos",
+      "eyebrow": "Contacto",
+      "title": "Hablemos de bicis.",
+      "cta": "Escríbeme",
+      "tag1": "Siempre sobre dos ruedas",
+      "tag2": "Pasión por la movilidad en bicicleta",
+      "tapCargo": "Pulsa la cargobike",
+      "pullTitle": "Saca un paquete de la caja",
+      "pullHelp": "Arrastra uno hacia arriba o púlsalo para abrir el proyecto.",
+      "seeList": "Verlo en lista",
+      "exIntro": "Proyectos en los que he trabajado para que ir en bici sea más fácil, más seguro y más habitual.",
+      "openCargo": "Abre la cargobike",
+      "visit": "Visita la web"
+    },
+    "en": {
+      "explore": "Explore",
+      "projects": "Projects",
+      "eyebrow": "Contact",
+      "title": "Let’s talk bikes.",
+      "cta": "Write to me",
+      "tag1": "Always on two wheels",
+      "tag2": "A passion for getting around by bike",
+      "tapCargo": "Tap the cargo bike",
+      "pullTitle": "Pull a parcel out of the box",
+      "pullHelp": "Drag one upwards or tap it to open the project.",
+      "seeList": "See as a list",
+      "exIntro": "Projects I’ve worked on to make cycling easier, safer and more everyday.",
+      "openCargo": "Open the cargo bike",
+      "visit": "Visit the website"
+    }
+  },
+  "contact": {
+    "email": "hola@eduardfolch.bike"
+  },
+  "projects": [
+    {
+      "id": "bicibus",
+      "url": "https://bicibus.eu",
+      "years": "2020 –",
+      "ca": {
+        "name": "Bicibús.eu",
+        "short": "Bicibús.eu",
+        "kind": "Plataforma · metodologia · app",
+        "role": "Impulsor de BicibúsLAB",
+        "where": "Catalunya i Europa",
+        "tag": "Infants que van a l’escola pedalant junts, amb ruta, parades i horari, com un autobús.",
+        "body": [
+          "El bicibús és un grup d’infants i famílies que fan el camí a l’escola en bicicleta per una ruta fixa, amb parades i horaris. Fa el carrer més segur, dona autonomia als infants i omple de bicis l’entrada de l’escola.",
+          "BicibúsLAB recull l’experiència dels bicibusos de Catalunya i l’ofereix a escoles, AFA i ajuntaments que en volen posar un en marxa. Hem creat una metodologia i una app per organitzar les rutes, que ja han ajudat a impulsar més de 40 rutes en 30 escoles.",
+          "És un projecte multidisciplinari, fet amb les cooperatives CUBIC i WHATIF."
+        ],
+        "facts": [
+          "40+ rutes",
+          "30 escoles",
+          "App pròpia"
+        ]
+      },
+      "es": {
+        "name": "Bicibús.eu",
+        "short": "Bicibús.eu",
+        "kind": "Plataforma · metodología · app",
+        "role": "Impulsor de BicibúsLAB",
+        "where": "Cataluña y Europa",
+        "tag": "Niños y niñas que van al colegio pedaleando juntos, con ruta, paradas y horario, como un autobús.",
+        "body": [
+          "El bicibús es un grupo de niños y familias que hacen el camino al colegio en bicicleta por una ruta fija, con paradas y horarios. Hace la calle más segura, da autonomía a los niños y llena de bicis la entrada del colegio.",
+          "BicibúsLAB recoge la experiencia de los bicibuses de Cataluña y la ofrece a colegios, AMPA y ayuntamientos que quieren poner uno en marcha. Hemos creado una metodología y una app para organizar las rutas, que ya han ayudado a impulsar más de 40 rutas en 30 colegios.",
+          "Es un proyecto multidisciplinar, hecho con las cooperativas CUBIC y WHATIF."
+        ],
+        "facts": [
+          "40+ rutas",
+          "30 colegios",
+          "App propia"
+        ]
+      },
+      "en": {
+        "name": "Bicibús.eu",
+        "short": "Bicibús.eu",
+        "kind": "Platform · method · app",
+        "role": "Founder of BicibúsLAB",
+        "where": "Catalonia and Europe",
+        "tag": "Children riding to school together, with a route, stops and a timetable, just like a bus.",
+        "body": [
+          "A bike bus is a group of children and families who ride to school along a fixed route with stops and times. It makes the street safer, gives children independence and fills the school gate with bikes.",
+          "BicibúsLAB gathers the experience of bike buses across Catalonia and shares it with schools, parent associations and councils that want to start one. We built a method and an app to organise routes, which have already helped launch more than 40 routes at 30 schools.",
+          "It is a multidisciplinary project, made with the cooperatives CUBIC and WHATIF."
+        ],
+        "facts": [
+          "40+ routes",
+          "30 schools",
+          "Own app"
+        ]
+      }
+    },
+    {
+      "id": "guia",
+      "url": "",
+      "years": "",
+      "ca": {
+        "name": "Guia de mobilitat escolar",
+        "short": "Guia mobilitat escolar",
+        "kind": "Guia pràctica",
+        "role": "",
+        "where": "Escoles i municipis",
+        "tag": "Com fer que anar a l’escola a peu o en bici sigui segur, saludable i habitual.",
+        "body": [
+          "Una guia pas a pas per a escoles, famílies i ajuntaments que volen canviar la manera d’arribar a l’escola.",
+          "Explica com analitzar els camins escolars, detectar els punts perillosos i proposar millores a l’entorn de l’escola. També recull iniciatives com el bicibús i el pedibús, i eines per implicar alumnat, famílies, escola i ajuntament."
+        ],
+        "facts": [
+          "Camins escolars",
+          "Bicibús i pedibús",
+          "Entorns segurs"
+        ]
+      },
+      "es": {
+        "name": "Guía de movilidad escolar",
+        "short": "Guía movilidad escolar",
+        "kind": "Guía práctica",
+        "role": "",
+        "where": "Colegios y municipios",
+        "tag": "Cómo hacer que ir al colegio a pie o en bici sea seguro, saludable y habitual.",
+        "body": [
+          "Una guía paso a paso para colegios, familias y ayuntamientos que quieren cambiar la forma de llegar al colegio.",
+          "Explica cómo analizar los caminos escolares, detectar los puntos peligrosos y proponer mejoras en el entorno del colegio. También recoge iniciativas como el bicibús y el pedibús, y herramientas para implicar al alumnado, las familias, el colegio y el ayuntamiento."
+        ],
+        "facts": [
+          "Caminos escolares",
+          "Bicibús y pedibús",
+          "Entornos seguros"
+        ]
+      },
+      "en": {
+        "name": "School mobility guide",
+        "short": "School mobility guide",
+        "kind": "Practical guide",
+        "role": "",
+        "where": "Schools and towns",
+        "tag": "How to make walking and cycling to school safe, healthy and normal.",
+        "body": [
+          "A step-by-step guide for schools, families and councils that want to change how children get to school.",
+          "It explains how to map school routes, spot dangerous points and propose improvements around the school. It also covers initiatives like bike buses and walking buses, and tools to involve pupils, families, the school and the council."
+        ],
+        "facts": [
+          "School routes",
+          "Bike & walking buses",
+          "Safe streets"
+        ]
+      }
+    },
+    {
+      "id": "osona",
+      "url": "",
+      "years": "",
+      "ca": {
+        "name": "Osona amb Bici",
+        "short": "Osona amb Bici",
+        "kind": "Entitat",
+        "role": "President",
+        "where": "Osona",
+        "tag": "La bicicleta com a mitjà de transport de cada dia a la comarca d’Osona.",
+        "body": [
+          "Osona amb Bici és l’entitat que promou l’ús quotidià de la bicicleta a Osona.",
+          "Treballa perquè anar en bici per la comarca sigui fàcil i segur, i perquè la bicicleta tingui el lloc que li toca en la mobilitat de pobles i ciutats."
+        ],
+        "facts": [
+          "Osona",
+          "Mobilitat quotidiana"
+        ]
+      },
+      "es": {
+        "name": "Osona amb Bici",
+        "short": "Osona amb Bici",
+        "kind": "Asociación",
+        "role": "Presidente",
+        "where": "Osona",
+        "tag": "La bicicleta como medio de transporte diario en la comarca de Osona.",
+        "body": [
+          "Osona amb Bici es la asociación que promueve el uso diario de la bicicleta en Osona.",
+          "Trabaja para que ir en bici por la comarca sea fácil y seguro, y para que la bicicleta tenga el lugar que le corresponde en la movilidad de pueblos y ciudades."
+        ],
+        "facts": [
+          "Osona",
+          "Movilidad diaria"
+        ]
+      },
+      "en": {
+        "name": "Osona amb Bici",
+        "short": "Osona amb Bici",
+        "kind": "Association",
+        "role": "President",
+        "where": "Osona, Catalonia",
+        "tag": "The bicycle as everyday transport across the Osona region.",
+        "body": [
+          "Osona amb Bici is the association that promotes everyday cycling in Osona.",
+          "It works to make riding around the region easy and safe, and to give the bicycle its rightful place in how towns and cities move."
+        ],
+        "facts": [
+          "Osona",
+          "Everyday cycling"
+        ]
+      }
+    }
+  ]
+}
