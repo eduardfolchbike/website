@@ -172,6 +172,10 @@ content:
             label: Enllaç del projecte
             description: Opcional. Comença per https://
             type: string
+          - name: page
+            label: Apartat dins d’eduardfolch.bike
+            description: "Opcional. Ruta d’una pàgina del mateix web, ex.: /guia-mobilitat-escolar/"
+            type: string
           - name: years
             label: Anys
             description: "Ex.: 2020 –"

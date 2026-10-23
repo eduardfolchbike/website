@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Guia de Mobilitat Escolar digital</title>
+<meta name="description" content="Eina web gratuïta per posar en marxa la mobilitat escolar sostenible: comissió, revisió de l’entorn, enquesta a les famílies, solucions i pla d’acció.">
+<meta property="og:title" content="Guia de mobilitat escolar sostenible · eduardfolch.bike">
+<meta property="og:description" content="Eina web gratuïta per posar en marxa la mobilitat escolar sostenible: comissió, revisió de l’entorn, enquesta a les famílies, solucions i pla d’acció.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://eduardfolch.bike/guia-mobilitat-escolar/">
+<meta name="theme-color" content="#0c0b0b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%23e3122b%22/%3E%3Cg fill=%22none%22 stroke=%22%23efe8e4%22 stroke-width=%227%22%3E%3Ccircle cx=%2228%22 cy=%2262%22 r=%2216%22/%3E%3Ccircle cx=%2272%22 cy=%2262%22 r=%2216%22/%3E%3Cpath d=%22M28 62 L48 62 L40 36 Z M40 36 L64 34 L48 62 M64 34 L72 62%22/%3E%3C/g%3E%3C/svg%3E">
+<style>[hidden]{display:none!important}img{max-width:100%}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800;900&display=swap">
+<style>
+/* Layout: estil eduardfolch.bike. Barra superior, mosaic amb text a l'esquerra i bicis a la dreta, banda vermella que corre, i seccions a pantalla ampla (negre, os, vermell). Una sola mirada fosca, decidida. */
+:root{
+  --black:#0c0b0b;
+  --coal:#1b1718;
+  --oxblood:#4a0b12;
+  --red:#e3122b;
+  --flame:#ff3b1f;
+  --bone:#efe8e4;
+  --bone-2:#d9d2cf;
+  --mute:#9d8e8f;
+  --kraft:#d8c6b8;
+  --font:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--black);color:var(--bone);font-family:var(--font);font-size:16px;line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button{font-family:var(--font)}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--bone);outline-offset:3px}
+.w{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.in{max-width:1180px;margin:0 auto}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin:0}
+h1,h2,h3{margin:0;text-wrap:balance}
+.big{font-weight:900;letter-spacing:-.06em;line-height:.88}
+
+/* ---------- Barra ---------- */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:41;background:var(--black)}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rgba(12,11,11,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(239,232,228,.08)}
+.bar-in{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:10px}
+.brand{font-weight:500;font-size:22px;letter-spacing:-.05em;text-decoration:none;white-space:nowrap}
+.brand sup{font-size:.45em;letter-spacing:0;margin-left:1px}
+.bar-r{display:flex;align-items:center;gap:6px}
+.navlink{color:var(--bone);text-decoration:none;font-weight:800;font-size:14px;letter-spacing:.04em;text-transform:uppercase;padding:11px 12px;border-radius:999px}
+.navlink:hover{background:rgba(239,232,228,.08)}
+.pg{display:inline-flex;align-items:center;gap:10px;background:var(--red);color:var(--bone);text-decoration:none;font-weight:800;font-size:14px;letter-spacing:.02em;text-transform:uppercase;padding:10px 16px 10px 12px;border-radius:999px;animation:ping 2.4s ease-out infinite;transition:background .2s}
+.pg:hover{background:var(--flame)}
+.pg .disc{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--bone);color:var(--red)}
+.pg .disc::before{content:"";border-left:8px solid currentColor;border-top:5px solid transparent;border-bottom:5px solid transparent;margin-left:2px}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(227,18,43,.55)}70%,100%{box-shadow:0 0 0 14px rgba(227,18,43,0)}}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr) minmax(0,.55fr);min-height:clamp(520px,78vh,760px)}
+.h-txt{background:linear-gradient(180deg,#000,var(--coal));display:flex;flex-direction:column;justify-content:center;gap:22px;padding-block:clamp(36px,6vw,72px) clamp(120px,14vw,160px);padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:clamp(20px,3vw,44px);animation:reveal .9s cubic-bezier(.7,0,.2,1) both}
+.h-txt h1{font-size:clamp(46px,7.4vw,118px)}
+.h-txt h1 em{font-style:normal;color:var(--red)}
+.lead{font-size:clamp(17px,1.5vw,21px);color:#c9bcbd;max-width:44ch;margin:0}
+.btns{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px}
+.btn{display:inline-flex;align-items:center;gap:14px;text-decoration:none;font-weight:700;font-size:20px;letter-spacing:-.01em;color:var(--black);background:var(--bone);padding:16px 22px 16px 26px;border-radius:999px;transition:background .25s,color .25s}
+.btn .arrow{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--red);color:var(--bone);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.btn:hover{background:var(--red);color:var(--bone)}
+.btn:hover .arrow{background:var(--black);transform:rotate(-45deg)}
+.link{font-weight:700;font-size:16px;text-underline-offset:5px}
+.tile{position:relative;overflow:hidden;display:grid;place-items:center;container-type:inline-size;animation:reveal .9s cubic-bezier(.7,0,.2,1) .1s both}
+.tile.b{background:linear-gradient(180deg,var(--bone-2),var(--bone));color:var(--black)}
+.tile.o{background:linear-gradient(180deg,#350810,var(--oxblood));color:var(--red);animation-delay:.2s}
+.tile.f{background:var(--flame);animation-delay:.3s}
+.h-col{display:grid;grid-template-rows:1fr 1fr}
+.tile .bike{width:min(78%,420px);transform:translateY(-14%);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.tile:hover .bike{transform:translateY(-14%) translateX(6%)}
+.tile:hover .wheel{animation-duration:.5s}
+@keyframes reveal{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
+.bike{display:block;overflow:visible;animation:bob 3.2s ease-in-out infinite}
+.bike *{vector-effect:non-scaling-stroke}
+.wheel{transform-box:fill-box;transform-origin:center;animation:spin 1.6s linear infinite}
+.crank{transform-box:fill-box;transform-origin:center;animation:spin 2.4s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes bob{50%{translate:0 -4px}}
+.band{position:absolute;left:0;right:0;bottom:clamp(22px,4vw,48px);z-index:5;background:var(--red);color:var(--black);overflow:hidden;animation:bandIn 1s cubic-bezier(.7,0,.2,1) .4s both}
+@keyframes bandIn{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+.track{display:flex;width:max-content;animation:marquee 34s linear infinite}
+.group{display:flex;align-items:center;gap:clamp(28px,4vw,64px);padding:16px clamp(28px,4vw,64px) 16px 0}
+.mark{font-weight:500;font-size:clamp(30px,4.2vw,54px);letter-spacing:-.055em;line-height:1;white-space:nowrap}
+.mark sup{font-size:.32em;letter-spacing:0;vertical-align:top;position:relative;top:.1em}
+.meta{font-size:15px;line-height:1.3;white-space:nowrap}
+.meta b{font-weight:700;display:block}
+@keyframes marquee{to{transform:translateX(-50%)}}
+.band:hover .track{animation-play-state:paused}
+
+/* ---------- Seccions ---------- */
+section.s{padding-block:clamp(56px,9vw,120px)}
+.s-h{display:flex;flex-direction:column;gap:16px;margin-bottom:clamp(28px,4vw,52px)}
+.s-h h2{font-size:clamp(40px,6.4vw,96px)}
+.s-h p{color:#c9bcbd;max-width:52ch;margin:0;font-size:18px}
+.rv{transform:translateY(28px);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.rv.in-view{transform:none}
+
+/* Camí: 6 passos */
+.road-steps{position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;padding-top:70px}
+.rs-line{position:absolute;left:0;right:0;top:46px;height:3px;background:repeating-linear-gradient(90deg,rgba(239,232,228,.3) 0 28px,transparent 28px 56px);animation:dash 1.2s linear infinite}
+@keyframes dash{to{background-position:56px 0}}
+.rs-bike{position:absolute;top:0;left:0;width:92px;color:var(--bone);animation:cruise 12s linear infinite}
+.rs-bike .bike{animation-duration:1.4s}.rs-bike .wheel{animation-duration:.7s}
+@keyframes cruise{from{transform:translateX(-110px)}to{transform:translateX(calc(1180px + 20px))}}
+.step{position:relative;background:linear-gradient(180deg,#1e191a,#151112);border:2px solid rgba(239,232,228,.08);border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:10px;min-width:0;transition:transform .25s cubic-bezier(.2,.8,.2,1),border-color .2s,background .2s}
+.step:hover{transform:translateY(-6px);border-color:var(--red);background:linear-gradient(180deg,#3a0a11,#1a0c0e)}
+.step .n{width:34px;height:34px;border-radius:50%;background:var(--red);display:grid;place-items:center;font-weight:900;font-size:15px}
+.step h3{font-weight:800;font-size:23px;letter-spacing:-.04em;line-height:1}
+.step p{margin:0;color:#c9bcbd;font-size:14px;line-height:1.45}
+
+/* Isòcrones (os) */
+.bone{background:var(--bone);color:var(--black)}
+.bone .s-h p{color:#4a3f40}
+.iso{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.iso-map{position:relative;background:#e3d9d5;border-radius:28px;aspect-ratio:1/1;max-width:100%;overflow:hidden}
+.iso-map svg{position:absolute;inset:0;width:100%;height:100%}
+.seg{display:inline-flex;gap:2px;padding:3px;border-radius:999px;background:rgba(12,11,11,.1)}
+.seg button{font:800 14px/1 var(--font);letter-spacing:.02em;border:0;background:transparent;color:var(--black);padding:12px 18px;border-radius:999px;cursor:pointer;opacity:.65}
+.seg button[aria-pressed="true"]{background:var(--black);color:var(--bone);opacity:1}
+.iso-side{display:flex;flex-direction:column;gap:20px;min-width:0}
+.rings{list-style:none;margin:0;padding:0;border-top:2px solid var(--black)}
+.rings li{display:grid;grid-template-columns:70px 1fr auto;gap:12px;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(12,11,11,.2)}
+.rings b{font-size:clamp(28px,3.4vw,44px);letter-spacing:-.05em;line-height:1}
+.rings span{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6b5d5e}
+.rings em{font-style:normal;font-weight:800;font-variant-numeric:tabular-nums;font-size:20px}
+.fine{font-size:13px;color:#6b5d5e;margin:0}
+
+/* Solucions: paquets */
+.ambits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.amb{background:linear-gradient(180deg,#1e191a,#151112);border:2px solid rgba(239,232,228,.08);border-radius:22px;padding:20px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.amb h3{font-weight:800;font-size:22px;letter-spacing:-.04em;line-height:1.05}
+.amb .k{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red)}
+.pk{display:flex;flex-wrap:wrap;gap:8px}
+.parcel{position:relative;background:var(--kraft);color:var(--black);border-radius:6px;padding:10px 14px 10px 18px;font-weight:800;font-size:15px;letter-spacing:-.02em;line-height:1.1;box-shadow:inset 0 -5px 0 rgba(0,0,0,.08),0 6px 14px rgba(0,0,0,.3);transition:transform .25s cubic-bezier(.3,1.5,.5,1);rotate:var(--r,0deg)}
+.parcel::before{content:"";position:absolute;left:7px;top:0;bottom:0;width:5px;background:var(--red)}
+.parcel:hover{transform:translateY(-4px) rotate(2deg);rotate:0deg}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(24px,3vw,36px)}
+.facts span{background:var(--bone);color:var(--black);font-weight:800;font-size:15px;padding:11px 16px;border-radius:999px}
+.facts span:first-child{background:var(--red);color:var(--bone)}
+
+/* Diagnosi: punt crític */
+.diag{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.panel{background:linear-gradient(180deg,#1e191a,#151112);border:2px solid rgba(239,232,228,.08);border-radius:26px;padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;gap:20px;min-width:0}
+.panel label{font-weight:700;font-size:15px;display:flex;justify-content:space-between;gap:12px}
+.panel label output{color:var(--red);font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;accent-color:var(--red);height:28px}
+.dots{display:flex;gap:6px}
+.dots i{flex:1;height:10px;border-radius:3px;background:rgba(239,232,228,.12);transition:background .3s}
+.dots i.on{background:var(--bone)}
+.dots i.bad{background:var(--red)}
+.score{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.score b{font-size:clamp(56px,8vw,96px);font-weight:900;letter-spacing:-.07em;line-height:.9;font-variant-numeric:tabular-nums}
+.score small{font-size:18px;color:var(--mute);font-weight:700}
+.verd{display:inline-flex;align-self:flex-start;font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:9px 14px;border-radius:999px;background:var(--bone);color:var(--black);transition:background .3s,color .3s}
+.verd.cap{background:var(--red);color:var(--bone)}
+.note{margin:0;color:#c9bcbd;font-size:15px;min-height:3em}
+.tag{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+
+/* Principis (vermell) */
+.redband{background:linear-gradient(180deg,var(--red),#c20e22);color:var(--black)}
+.pr{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2.4vw,32px)}
+.pr div{border-top:3px solid var(--black);padding-top:16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.pr h3{font-weight:900;font-size:clamp(26px,3vw,40px);letter-spacing:-.05em;line-height:.95}
+.pr p{margin:0;font-size:15px;font-weight:500}
+.redband .eyebrow{color:var(--black)}
+
+/* Sortides */
+.docs{list-style:none;margin:0;padding:0;border-top:1px solid rgba(239,232,228,.14)}
+.docs li{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:18px;align-items:center;padding:22px 4px;border-bottom:1px solid rgba(239,232,228,.14);transition:background .25s,padding .25s}
+.docs li:hover{background:rgba(227,18,43,.12);padding-inline:14px}
+.pbox{width:52px;height:46px;border-radius:5px;background:var(--kraft);position:relative;box-shadow:inset 0 -5px 0 rgba(0,0,0,.08)}
+.pbox::before{content:"";position:absolute;left:44%;top:0;bottom:0;width:12%;background:var(--red)}
+.docs h3{font-weight:800;font-size:clamp(24px,3.6vw,44px);letter-spacing:-.05em;line-height:1}
+.docs small{display:block;margin-top:6px;color:var(--mute);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.docs .a{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--red);font-weight:900;transition:transform .3s}
+.docs li:hover .a{transform:rotate(-45deg)}
+
+/* Final */
+.final{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:clamp(380px,50vh,540px)}
+.f-l{background:linear-gradient(180deg,#141112,var(--black));display:flex;flex-direction:column;justify-content:space-between;gap:36px;padding-block:clamp(32px,5vw,56px);padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:clamp(24px,4vw,56px)}
+.f-l h2{font-size:clamp(46px,7vw,104px);margin-top:14px}
+.addr{display:flex;align-items:center;gap:10px;flex-wrap:wrap;min-width:0}
+.addr span{user-select:all;overflow-wrap:anywhere;font-size:14px;opacity:.8}
+.copy{font:700 11px/1 var(--font);letter-spacing:.1em;text-transform:uppercase;color:var(--bone);background:transparent;border:1px solid rgba(239,232,228,.25);border-radius:999px;padding:7px 11px;cursor:pointer}
+.copy:hover{border-color:var(--red);color:var(--red)}
+.road{position:relative;overflow:hidden;background:linear-gradient(180deg,var(--red),#c20e22);color:var(--black);container-type:inline-size;display:flex;flex-direction:column;justify-content:flex-end;padding-block:clamp(32px,5vw,56px);padding-right:max(24px,env(safe-area-inset-right,0px));padding-left:clamp(24px,4vw,56px)}
+.rider{position:absolute;left:0;width:var(--w);animation:ride var(--d) linear infinite;animation-delay:var(--delay);color:var(--c)}
+.rider .bike{animation-duration:1.4s}.rider .wheel{animation-duration:.7s}
+@keyframes ride{from{transform:translateX(calc(-1*var(--w) - 20px))}to{transform:translateX(calc(100cqw + 20px))}}
+.lane{position:absolute;left:0;right:0;height:2px;background:repeating-linear-gradient(90deg,rgba(12,11,11,.35) 0 28px,transparent 28px 56px);animation:dash 1.2s linear infinite}
+.wordmark{position:relative;z-index:2;font-weight:500;letter-spacing:-.06em;line-height:.85;margin:0;font-size:clamp(40px,8.6cqw,120px);white-space:nowrap}
+.wordmark sup{font-size:.25em;letter-spacing:0;vertical-align:top;position:relative;top:.15em}
+.foot{position:relative;z-index:2;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 14px;font-size:13px;font-weight:500;margin-top:18px}
+.credit{background:var(--black);padding-block:22px 28px;font-size:13px;color:var(--mute)}
+.credit p{margin:0;max-width:90ch}
+
+
+/* Per a qui */
+.who{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.who article{border-top:3px solid var(--red);padding-top:16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.who h3{font-weight:800;font-size:clamp(24px,2.6vw,34px);letter-spacing:-.045em;line-height:1}
+.who p{margin:0;color:#c9bcbd;font-size:16px}
+.iso-map .ex{position:absolute;z-index:2;top:14px;left:14px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:var(--black);color:var(--bone);padding:7px 11px;border-radius:999px}
+/* Preguntes */
+.faqwrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(24px,4vw,56px);align-items:start}
+.faq{border-top:1px solid rgba(239,232,228,.14)}
+.faq details{border-bottom:1px solid rgba(239,232,228,.14)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 4px;font-weight:800;font-size:clamp(20px,2.4vw,28px);letter-spacing:-.04em;line-height:1.1}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--red);color:var(--bone);font-weight:900;font-size:20px;transition:transform .3s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{margin:0;padding:0 4px 22px;color:#c9bcbd;font-size:17px;max-width:56ch}
+.wordmark{text-decoration:none;color:inherit;display:block}
+.credit a{color:var(--bone)}
+@media (max-width:980px){.who{grid-template-columns:1fr}.faqwrap{grid-template-columns:1fr}}
+@media (max-width:980px){
+  .hero{grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:0}
+  .h-txt{grid-column:1/-1;padding-bottom:44px}
+  .band{position:relative;bottom:auto;grid-column:1/-1}
+  .h-col{grid-column:1/-1;grid-template-rows:none;grid-template-columns:1fr 1fr}
+  .tile{aspect-ratio:1/1}
+  .tile.f{display:none}
+  .h-col .tile.b{grid-column:auto}
+  .road-steps{grid-template-columns:repeat(2,minmax(0,1fr));padding-top:0}
+  .rs-line,.rs-bike{display:none}
+  .iso,.diag{grid-template-columns:1fr}
+  .ambits{grid-template-columns:1fr}
+  .pr{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .final{grid-template-columns:1fr}
+  .road{min-height:300px}
+  .navlink{display:none}
+}
+@media (max-width:480px){
+  .road-steps{grid-template-columns:1fr}
+  .pr{grid-template-columns:1fr}
+  .brand{font-size:18px}
+  .pg{font-size:12px;padding:9px 12px 9px 9px}
+  .docs li{grid-template-columns:44px minmax(0,1fr) auto;gap:12px}
+  .pbox{width:42px;height:38px}
+  .rings li{grid-template-columns:56px 1fr auto}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv{transform:none}
+}
+</style>
+
+</head>
+<body>
+<header class="bar w">
+  <div class="bar-in in">
+    <a class="brand" href="https://eduardfolch.bike/">eduardfolch.bike<sup>®</sup></a>
+    <div class="bar-r">
+      <a class="navlink" href="#ruta">Com funciona</a>
+      <a class="navlink" href="#solucions">Solucions</a>
+      <a class="navlink" href="#preguntes">Preguntes</a>
+      <a class="pg" href="https://eduardfolchbike.github.io/guiamobilitatescolar/" target="_blank" rel="noopener"><span class="disc" aria-hidden="true"></span>Obre l’eina</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="h-txt">
+    <p class="eyebrow">Guia de mobilitat escolar sostenible</p>
+    <h1 class="big">Que anar a l’escola sigui <em>el millor moment del dia.</em></h1>
+    <p class="lead">Una eina web gratuïta per a escoles, famílies i ajuntaments que volen que més infants vagin a l’escola a peu o en bicicleta, i amb seguretat. Us acompanya pas a pas, des de la primera reunió fins al pla d’acció.</p>
+    <div class="btns">
+      <a class="btn" href="https://eduardfolchbike.github.io/guiamobilitatescolar/" target="_blank" rel="noopener"><span>Obre l’eina</span><span class="arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a class="link" href="#perque">Per què serveix</a>
+    </div>
+  </div>
+  <div class="h-col">
+    <div class="tile b" data-bike="city"></div>
+    <div class="tile o" data-bike="cargo"></div>
+  </div>
+  <div class="tile f" aria-hidden="true"></div>
+  <div class="band" aria-hidden="true"><div class="track" id="track"></div></div>
+</section>
+
+<!-- ===== PER QUÈ ===== -->
+<section class="s w" id="perque">
+  <div class="in">
+    <div class="s-h rv">
+      <p class="eyebrow">El punt de partida</p>
+      <h2 class="big">Cues de cotxes a la porta. Infants que no poden anar sols.</h2>
+      <p>A moltes escoles, l’hora d’entrada és el moment més perillós i estressant del dia. La Guia de mobilitat escolar sostenible de la Diputació de Barcelona explica com canviar-ho. Aquesta eina la converteix en una feina pràctica que podeu fer a la vostra escola.</p>
+    </div>
+    <div class="who rv">
+      <article><h3>Equips directius i docents</h3><p>Per organitzar el projecte i implicar-hi l’alumnat.</p></article>
+      <article><h3>AFA i famílies</h3><p>Per saber com arriben els infants i proposar canvis amb dades.</p></article>
+      <article><h3>Ajuntaments</h3><p>Per decidir quines obres i serveis tenen més impacte a cada escola.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RUTA ===== -->
+<section class="s w" id="ruta" style="background:linear-gradient(180deg,var(--black),var(--coal))">
+  <div class="in">
+    <div class="s-h rv">
+      <p class="eyebrow">Com funciona</p>
+      <h2 class="big">Sis passos, de la primera reunió als resultats.</h2>
+      <p>No cal saber res de mobilitat per començar. Cada pas explica què heu de fer i desa el que escriviu.</p>
+    </div>
+    <div class="road-steps rv">
+      <div class="rs-line" aria-hidden="true"></div>
+      <div class="rs-bike" aria-hidden="true" data-bike="fold"></div>
+      <article class="step"><span class="n">1</span><h3>Formeu el grup</h3><p>Una comissió amb direcció, famílies, alumnat i ajuntament. L’eina reparteix les tasques i prepara l’acta.</p></article>
+      <article class="step"><span class="n">2</span><h3>Reviseu l’entorn</h3><p>Sortiu al carrer amb una llista de preguntes: voreres, cruïlles, velocitat dels cotxes, ombra. L’eina puntua cada aspecte.</p></article>
+      <article class="step"><span class="n">3</span><h3>Pregunteu a les famílies</h3><p>Una enquesta llesta per a Google Forms: com venen, des d’on i què els frena. Importeu les respostes i veieu els gràfics.</p></article>
+      <article class="step"><span class="n">4</span><h3>Trieu solucions</h3><p>A partir dels resultats, l’eina proposa les mesures que encaixen més amb la vostra escola.</p></article>
+      <article class="step"><span class="n">5</span><h3>Prepareu els projectes</h3><p>Fases, pressupost orientatiu i calculadores per a cada mesura que trieu.</p></article>
+      <article class="step"><span class="n">6</span><h3>Mesureu el canvi</h3><p>Compareu les dades d’abans i de després per saber si la mesura funciona.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ISÒCRONES ===== -->
+<section class="s w bone" id="mapa">
+  <div class="in">
+    <div class="s-h rv">
+      <p class="eyebrow">Mapa de distàncies</p>
+      <h2 class="big">Qui pot venir a peu? Ho veureu en un mapa.</h2>
+      <p>Poseu l’adreça de l’escola i l’eina dibuixa fins on es pot arribar en 5, 10 i 15 minuts a peu o en bicicleta, seguint els carrers. Aquests mapes s’anomenen isòcrones. Si una família viu dins la zona i ve en cotxe, hi ha marge per canviar.</p>
+    </div>
+    <div class="iso rv">
+      <div class="iso-map"><span class="ex">Exemple</span><svg id="isoSvg" viewBox="0 0 400 400" role="img" aria-label="Exemple d’isòcrones al voltant d’una escola"></svg></div>
+      <div class="iso-side">
+        <div class="seg" role="group" aria-label="Com es desplaça la família">
+          <button type="button" data-m="walk" aria-pressed="true">A peu</button>
+          <button type="button" data-m="bike" aria-pressed="false">En bicicleta</button>
+        </div>
+        <ul class="rings" id="ringList"></ul>
+        <p class="fine" id="isoNote"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOLUCIONS ===== -->
+<section class="s w" id="solucions">
+  <div class="in">
+    <div class="s-h rv">
+      <p class="eyebrow">Solucions</p>
+      <h2 class="big">13 maneres de fer-ho, agrupades en 6 temes.</h2>
+      <p>Des de tancar el carrer de l’escola als cotxes a l’hora d’entrada fins a organitzar un bicibús: un grup d’infants que va a l’escola en bici acompanyat d’adults, amb ruta i horari. Cada fitxa explica com posar la mesura en marxa i quant pot costar, i inclou el text complet de la guia.</p>
+    </div>
+    <div class="ambits rv" id="ambits"></div>
+    <div class="facts rv">
+      <span>Text original de la guia</span>
+      <span>Pressupost orientatiu</span>
+      <span>Calculadores</span>
+      <span>Indicadors per mesurar els resultats</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DIAGNOSI ===== -->
+<section class="s w" id="revisio" style="background:linear-gradient(180deg,var(--black),var(--coal))">
+  <div class="in">
+    <div class="s-h rv">
+      <p class="eyebrow">Revisió de l’entorn</p>
+      <h2 class="big">Una mitjana bona no amaga un problema greu.</h2>
+      <p>Quan reviseu l’entorn de l’escola, cada aspecte rep una puntuació de l’1 al 4. Si un aspecte surt molt malament, l’eina no deixa que la resta el compensi: l’assenyala com a punt crític.</p>
+    </div>
+    <div class="diag rv">
+      <div class="panel">
+        <span class="tag">Exemple · entrada de l’escola</span>
+        <div>
+          <label for="rng">Ombra i calor a l’entrada <output id="rngOut">4</output></label>
+          <input id="rng" type="range" min="1" max="4" step="1" value="4" aria-describedby="rngHelp">
+          <div class="dots" id="dots" aria-hidden="true"></div>
+          <p class="fine" id="rngHelp" style="color:var(--mute);margin-top:8px">1 = molt dolent · 4 = molt bo. Mou el control per veure què passa.</p>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="score"><b id="scoreNum">12</b><small>/ 12 punts</small></div>
+        <span class="verd" id="verd">Favorable</span>
+        <p class="note" id="diagNote"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRINCIPIS ===== -->
+<section class="s w redband">
+  <div class="in">
+    <div class="s-h rv" style="margin-bottom:clamp(24px,3vw,40px)">
+      <p class="eyebrow">Com és l’eina</p>
+      <h2 class="big">Gratuïta, oberta i sense complicacions.</h2>
+    </div>
+    <div class="pr rv">
+      <div><h3>Sense registre</h3><p>Obriu la web i comenceu. No cal crear cap compte.</p></div>
+      <div><h3>Les dades són vostres</h3><p>Es guarden al vostre navegador. Podeu descarregar-ne una còpia i passar-la a una altra persona.</p></div>
+      <div><h3>Sense intel·ligència artificial</h3><p>Les puntuacions i les propostes segueixen regles fixes, basades en la guia, que podeu revisar.</p></div>
+      <div><h3>Ajuda a cada pàgina</h3><p>El botó d’ajuda us ensenya què fa cada part de la pantalla, també al mòbil.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DOCUMENTS ===== -->
+<section class="s w">
+  <div class="in">
+    <div class="s-h rv">
+      <p class="eyebrow">Documents</p>
+      <h2 class="big">Documents llestos per presentar.</h2>
+      <p>La feina que feu es converteix en documents per portar al consell escolar o a l’ajuntament.</p>
+    </div>
+    <ul class="docs rv">
+      <li><span class="pbox"></span><div><h3>Informe de diagnosi</h3><small>Resultats de la revisió de l’entorn i de l’enquesta</small></div><span class="a">→</span></li>
+      <li><span class="pbox"></span><div><h3>Manifest i acta</h3><small>Per constituir la comissió i signar compromisos</small></div><span class="a">→</span></li>
+      <li><span class="pbox"></span><div><h3>Pla d’acció</h3><small>Què fareu, qui ho farà i com ho mesurareu</small></div><span class="a">→</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== PREGUNTES ===== -->
+<section class="s w" id="preguntes" style="background:linear-gradient(180deg,var(--black),var(--coal))">
+  <div class="in faqwrap">
+    <div class="s-h rv">
+      <p class="eyebrow">Preguntes freqüents</p>
+      <h2 class="big">Abans de començar.</h2>
+    </div>
+    <div class="faq rv">
+      <details open><summary>Quant costa?</summary><p>Res. L’eina és gratuïta i oberta.</p></details>
+      <details><summary>Cal instal·lar alguna cosa?</summary><p>No. Funciona al navegador, tant a l’ordinador com al mòbil.</p></details>
+      <details><summary>On es guarden les dades?</summary><p>Al navegador de qui fa servir l’eina. Per compartir la feina amb la comissió, descarregueu una còpia i l’altra persona la carrega al seu navegador.</p></details>
+      <details><summary>Cal saber de mobilitat?</summary><p>No. Cada pàgina explica què heu de fer i podeu llegir el text original de la guia en qualsevol moment.</p></details>
+      <details><summary>Qui l’ha fet?</summary><p>Eduard Folch, autor de la Guia de mobilitat escolar sostenible de la Diputació de Barcelona.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL ===== -->
+<section class="final">
+  <div class="f-l">
+    <div>
+      <p class="eyebrow">Comenceu avui</p>
+      <h2 class="big">Feu el primer pas amb la vostra escola.</h2>
+    </div>
+    <div class="btns">
+      <a class="btn" href="https://eduardfolchbike.github.io/guiamobilitatescolar/" target="_blank" rel="noopener"><span>Obre l’eina</span><span class="arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <div class="addr"><span id="addr">eduardfolchbike.github.io/guiamobilitatescolar</span><button class="copy" id="copy" type="button">Copiar</button></div>
+    </div>
+  </div>
+  <div class="road">
+    <div class="lane" style="top:30%"></div>
+    <div class="lane" style="top:58%"></div>
+    <div id="riders"></div>
+    <a class="wordmark" href="https://eduardfolch.bike/">eduardfolch.bike<sup>®</sup></a>
+    <div class="foot"><span>© 2026</span><span style="font-variant-numeric:tabular-nums">41.3874° N, 2.1686° E · Barcelona</span></div>
+  </div>
+</section>
+<div class="credit w"><div class="in"><p>L’eina es basa en la <a href="https://www.diba.cat/documents/d/mediambient/guia-mob-escolar-2026" target="_blank" rel="noopener">Guia de mobilitat escolar sostenible</a> (Diputació de Barcelona, 2026). Les il·lustracions i els textos de les fitxes provenen de la guia.</p></div></div>
+</main>
+
+<script>
+(() => {
+const spokes=(cx,cy,r)=>{let d='';for(let i=0;i<8;i++){const a=i*Math.PI/4;d+=`M${cx} ${cy} L${(cx+Math.cos(a)*r).toFixed(1)} ${(cy+Math.sin(a)*r).toFixed(1)} `;}return `<path stroke-width="1.1" d="${d}"/>`;};
+const wheel=(cx,cy,r)=>`<g class="wheel"><circle cx="${cx}" cy="${cy}" r="${r}"/>${spokes(cx,cy,r)}<circle cx="${cx}" cy="${cy}" r="2.5" fill="currentColor"/></g>`;
+const head='<svg class="bike" viewBox="0 0 260 130" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">';
+const SVG={
+ city:()=>`${head}${wheel(60,94,32)}${wheel(195,94,32)}<path d="M24 82 A38 38 0 0 1 82 70 M162 70 A38 38 0 0 1 224 80"/><path d="M60 94 L118 94 L104 46 Z M118 94 Q138 66 172 48 L195 94"/><path d="M104 46 L100 34 M88 32 L112 32 M172 48 L168 30 L184 28"/><path d="M180 44 h34 v-20 h-34 z M186 24 v20 M196 24 v20 M206 24 v20"/><path d="M60 94 L64 60 L98 60"/><g class="crank"><circle cx="118" cy="94" r="7"/><path d="M118 94 v13 M118 94 v-13"/></g></svg>`,
+ fold:()=>`${head}${wheel(78,102,20)}${wheel(182,102,20)}<path d="M78 102 L122 96 L118 38 M122 96 L170 66 L182 102 M78 102 L120 80"/><path d="M108 36 L132 36 M170 66 L168 26 L184 24"/><circle cx="146" cy="81" r="4" fill="currentColor"/><g class="crank"><circle cx="122" cy="96" r="7"/><path d="M122 96 v12 M122 96 v-12"/></g></svg>`,
+ cargo:()=>`${head}${wheel(36,94,30)}${wheel(214,104,20)}<path d="M134 58 h104 v40 h-104 z" fill="currentColor" fill-opacity=".18"/><path d="M134 58 h104 v40 h-104 z M134 70 h104"/><path d="M36 94 L84 94 L72 44 Z M84 94 L120 70 L214 104 M120 70 L126 48"/><path d="M72 44 L68 32 M56 30 L80 30 M126 48 L122 30 L138 28"/><g class="crank"><circle cx="84" cy="94" r="7"/><path d="M84 94 v13 M84 94 v-13"/></g></svg>`
+};
+document.querySelectorAll('[data-bike]').forEach(t=>t.innerHTML=SVG[t.dataset.bike]());
+document.getElementById('riders').innerHTML=[
+ {top:'6%',w:'150px',d:'9s',delay:'0s',c:'var(--black)',b:'city'},
+ {top:'34%',w:'110px',d:'7s',delay:'-3s',c:'var(--bone)',b:'fold'},
+ {top:'12%',w:'90px',d:'12s',delay:'-6s',c:'#7a0814',b:'cargo'},
+ {top:'40%',w:'140px',d:'10s',delay:'-7.5s',c:'var(--black)',b:'cargo'}
+].map(r=>`<div class="rider" style="top:${r.top};--w:${r.w};--d:${r.d};--delay:${r.delay};--c:${r.c}">${SVG[r.b]()}</div>`).join('');
+
+/* Banda */
+const grp=`<div class="group"><span class="mark">Guia de mobilitat escolar</span><span class="meta"><b>A peu i en bici</b>cap a l’escola</span><span class="mark">Eina gratuïta</span><span class="meta"><b>13 solucions</b>agrupades en 6 temes</span><span class="meta"><b>Sense registre</b>ni instal·lació</span></div>`;
+document.getElementById('track').innerHTML=grp+grp;
+
+/* Solucions per àmbit */
+const AMB=[
+ ['1','Entorn escolar segur i saludable',['Camí escolar','Carrer escolar','Zona Cor']],
+ ['2','Promoció de la mobilitat activa',['Bicibús','Pedibús','Préstec escolar de bicicletes','Préstec de bicis de càrrega','Bus a pedals']],
+ ['3','Transport públic cap a l’escola',['Conciliabús']],
+ ['4','Restricció i desincentivació del cotxe',['Aparca i camina']],
+ ['5','Gestió dels serveis de bus escolar',['Protocol de tria d’alternatives a l’autobús']],
+ ['6','Educació, sensibilització i comunitat',['Coproduir mesures i reduir resistències','Comunicació i canvi de comportament']]
+];
+const rot=[-2,1.5,-1,2,-1.5,1];
+document.getElementById('ambits').innerHTML=AMB.map(([n,t,f])=>`<article class="amb"><span class="k">Tema ${n}</span><h3>${t}</h3><div class="pk">${f.map((x,i)=>`<span class="parcel" style="--r:${rot[(i+ +n)%6]}deg">${x}</span>`).join('')}</div></article>`).join('');
+
+/* Isòcrones */
+const svg=document.getElementById('isoSvg'),list=document.getElementById('ringList'),note=document.getElementById('isoNote');
+const NS='http://www.w3.org/2000/svg';
+const MODES={walk:{v:4,name:'a peu',max:1000,col:'#e3122b',note:'A 4 km/h, el pas d’un adult que camina amb infants.'},bike:{v:12,name:'en bicicleta',max:3000,col:'#1b1718',note:'A 12 km/h, el ritme d’una família que pedala junta.'}};
+const TIMES=[5,10,15],R=168,C=200;
+let mode='walk',cur=[0,0,0],raf=0;
+// carrers de fons
+let bg='';for(let i=-4;i<=4;i++){bg+=`<line x1="${C+i*46}" y1="0" x2="${C+i*46+ (i%2?18:-12)}" y2="400" stroke="#cfc3be" stroke-width="${i%3?5:9}"/><line x1="0" y1="${C+i*46+(i%2?-14:10)}" x2="400" y2="${C+i*46+(i%2?10:-16)}" stroke="#cfc3be" stroke-width="${i%3?5:9}"/>`;}
+svg.innerHTML=`<g>${bg}</g>`+TIMES.map((t,i)=>`<circle data-i="${i}" cx="${C}" cy="${C}" r="0" fill="rgba(227,18,43,.12)" stroke="#e3122b" stroke-width="3" stroke-dasharray="${i?'0':'0'}"/>`).join('')+TIMES.map((t,i)=>`<text data-l="${i}" x="${C}" y="${C}" text-anchor="middle" font-family="Schibsted Grotesk,sans-serif" font-weight="800" font-size="13" fill="#0c0b0b" paint-order="stroke" stroke="#e3122b" stroke-width="0"></text>`).join('')+`<circle cx="${C}" cy="${C}" r="9" fill="#0c0b0b" stroke="#efe8e4" stroke-width="3"/><text x="${C}" y="${C+30}" text-anchor="middle" font-family="Schibsted Grotesk,sans-serif" font-weight="800" font-size="12" fill="#0c0b0b">ESCOLA</text>`;
+const circles=[...svg.querySelectorAll('circle[data-i]')],labels=[...svg.querySelectorAll('text[data-l]')];
+function paint(rs){circles.forEach((c,i)=>{c.setAttribute('r',rs[i].toFixed(1));});
+  labels.forEach((l,i)=>{l.setAttribute('y',(C-rs[i]-6).toFixed(1));l.textContent=rs[i]>20?TIMES[i]+' min':'';});}
+function go(m){mode=m;const M=MODES[m];
+  document.querySelectorAll('.seg button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.m===m)));
+  circles.forEach(c=>{c.setAttribute('stroke',M.col);c.setAttribute('fill',m==='walk'?'rgba(227,18,43,.12)':'rgba(12,11,11,.08)');});
+  circles.forEach((c,i)=>c.setAttribute('stroke-dasharray',m==='bike'?'8 7':'0'));
+  const to=TIMES.map(t=>t/15*R),from=cur.slice(),t0=performance.now(),dur=900;
+  cancelAnimationFrame(raf);
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const step=now=>{const k=reduce?1:Math.min(1,(now-t0)/dur),e=1-Math.pow(1-k,3);
+    cur=from.map((f,i)=>f+(to[i]-f)*e);paint(cur);if(k<1)raf=requestAnimationFrame(step);};
+  raf=requestAnimationFrame(step);
+  list.innerHTML=TIMES.map(t=>{const d=Math.round(M.v*1000/60*t/10)*10;return `<li><span>${t} min</span><b>${d>=1000?(d/1000).toLocaleString('ca',{maximumFractionDigits:2})+' km':d+' m'}</b><em>${M.name}</em></li>`;}).join('');
+  note.textContent=`${M.note} Aquí són distàncies en línia recta. L’eina calcula el mapa real seguint els carrers de la vostra escola.`;
+}
+document.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()=>go(b.dataset.m)));
+go('walk');
+
+/* Diagnosi */
+const rng=document.getElementById('rng'),dots=document.getElementById('dots');
+dots.innerHTML='<i></i><i></i><i></i><i></i>';
+function diag(){const v=+rng.value;document.getElementById('rngOut').textContent=v;
+  [...dots.children].forEach((d,i)=>{d.className=i<v?(v===1?'bad':'on'):'';});
+  document.getElementById('scoreNum').textContent=8+v; /* la resta de preguntes sumen 8 punts */
+  const crit=v===1,verd=document.getElementById('verd');
+  verd.textContent=crit?'Intermedi · punt crític':'Favorable';
+  verd.classList.toggle('cap',crit);
+  document.getElementById('diagNote').textContent=crit
+    ?'La suma dona 9 de 12, que seria favorable. Però a l’entrada hi fa una calor insuportable, i l’eina no ho deixa passar: el resultat baixa a intermedi i surt marcat com a punt crític.'
+    :'Cap aspecte té la puntuació mínima, així que el resultat és favorable.';}
+rng.addEventListener('input',diag);diag();
+
+/* Copiar */
+document.getElementById('copy').addEventListener('click',async e=>{
+  const t='https://eduardfolchbike.github.io/guiamobilitatescolar/',b=e.currentTarget;
+  try{await navigator.clipboard.writeText(t);b.textContent='Copiat';}catch(_){const r=document.createRange();r.selectNodeContents(document.getElementById('addr'));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selecciona i copia';}
+  setTimeout(()=>b.textContent='Copiar',1800);});
+
+/* Aparició */
+const rv=document.querySelectorAll('.rv');
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target);}}),{threshold:.12});rv.forEach(el=>io.observe(el));}
+else rv.forEach(el=>el.classList.add('in-view'));
+})();
+</script>
+
+</body>
+</html>
