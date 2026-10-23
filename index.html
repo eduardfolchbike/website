@@ -539,6 +539,7 @@ const T = {
     st1:'Complete the mission', st2:'Lose no lives', st3:'No red lights run', best:'Best', newBest:'New best!', go:'Go!',
     red:'Red light!', civ:'Good rider +150', crash:'Ouch!', hole:'Pothole!', ring:'Ring ring!', slip:'Slippery!', turbo:'Turbo!', life:'+1 life', parcel:'+{n} parcel', smash:'Bam!'}
 };
+const PAGE_ES = {'/guia-mobilitat-escolar/':'/guia-movilidad-escolar/'}; /* pàgines amb versió en castellà */
 let lang = 'ca';
 try { const s = localStorage.getItem('efb-lang'); if (T[s]) lang = s; } catch(e){}
 const tr = k => T[lang][k];
@@ -1323,7 +1324,7 @@ function fillProject(p){
   $('pBody').innerHTML = d.body.map(x=>`<p>${esc(x)}</p>`).join('');
   const rows = [[t.fRole,d.role],[t.fYears,p.years],[t.fWhere,d.where]].filter(r=>r[1]);
   $('pSide').innerHTML = `<dl>${rows.map(r=>`<div><dt>${esc(r[0])}</dt><dd>${esc(r[1])}</dd></div>`).join('')}</dl>` +
-    (p.page ? `<a class="visit page" href="${esc(p.page)}">${t.discover} →</a>` : '') +
+    (p.page ? `<a class="visit page" href="${esc((lang==='es' && PAGE_ES[p.page]) || p.page)}">${t.discover} →</a>` : '') +
     (/^https?:\/\//.test(p.url||'') ? `<a class="visit" href="${esc(p.url)}" target="_blank" rel="noopener">${t.visit} ↗</a>` : '');
   $('pSide').hidden = !rows.length && !p.url && !p.page;
   $('pBack').textContent = '← ' + (projFrom==='stage' ? t.backCargo : t.backList);
