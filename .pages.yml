@@ -164,7 +164,7 @@ content:
         fields:
           - name: id
             label: Identificador
-            description: "Per a l’enllaç directe (eduardfolch.bike/#id). Minúscules, sense espais ni accents."
+            description: "També és la ruta del projecte: eduardfolch.bike/identificador. Minúscules, sense espais ni accents."
             type: string
             required: true
             pattern: ^[a-z0-9-]+$
@@ -174,7 +174,7 @@ content:
             type: string
           - name: page
             label: Apartat dins d’eduardfolch.bike
-            description: "Opcional. Ruta d’una pàgina del mateix web, ex.: /guia-mobilitat-escolar/"
+            description: "Opcional. Ruta d’una pàgina del mateix web, ex.: /guia-mobilitat-escolar/. Si l’omples, el paquet i Explora hi porten directament, sense fitxa."
             type: string
           - name: years
             label: Anys

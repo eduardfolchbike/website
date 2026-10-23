@@ -292,6 +292,7 @@ kbd{font:700 12px/1 var(--font);background:var(--bone);color:var(--black);border
 .visit{display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;font-weight:800;font-size:16px;color:var(--bone);background:var(--black);padding:14px 18px;border-radius:999px}
 .visit:hover{background:var(--red)}
 .visit.page{background:var(--red)}
+.wipe{position:fixed;inset:0;z-index:200;background:var(--red);pointer-events:none}
 .visit.page:hover{background:var(--black)}
 .sheet-nav{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;border-top:2px solid var(--black);padding-top:20px}
 .sheet .ghost{color:var(--black);border-color:rgba(12,11,11,.3)}
@@ -1304,8 +1305,19 @@ function renderExplore(){
 function openExplore(){ renderExplore(); openOv('explore'); setHash('explora'); $('exClose').focus({preventScroll:true}); }
 
 /* --- fitxa --- */
+function pageOf(p){ return p && p.page ? ((lang==='es' && PAGE_ES[p.page]) || p.page) : ''; }
+function goPage(url, origin){
+  if(reduceMotion || !origin){ location.assign(url); return; }
+  const w=document.createElement('div'); w.className='wipe';
+  const R=Math.hypot(Math.max(origin.x, innerWidth-origin.x), Math.max(origin.y, innerHeight-origin.y));
+  document.body.appendChild(w);
+  const a=w.animate([{clipPath:`circle(0px at ${origin.x}px ${origin.y}px)`},{clipPath:`circle(${R}px at ${origin.x}px ${origin.y}px)`}],{duration:520,easing:'cubic-bezier(.7,0,.2,1)',fill:'forwards'});
+  a.onfinish=()=>location.assign(url);
+}
+addEventListener('pageshow', () => document.querySelectorAll('.wipe').forEach(w=>w.remove()));
 function openProject(id, origin, from){
   const p = PROJECTS.find(x=>x.id===id); if(!p) return;
+  if(p.page){ goPage(pageOf(p), origin); return; }
   currentProj=id; if(from) projFrom=from;
   fillProject(p);
   openOv('proj'); setHash(id);
@@ -1359,7 +1371,7 @@ function fromHash(){
   const h = (location.hash||'').slice(1);
   if(h==='explora') openExplore();
   else if(h==='cargo') openCargo();
-  else if(PROJECTS.some(p=>p.id===h) && currentProj!==h){ projFrom='explore'; openProject(h); }
+  else if(PROJECTS.some(p=>p.id===h) && currentProj!==h){ const p=PROJECTS.find(x=>x.id===h); if(p.page){ location.replace(pageOf(p)); return; } projFrom='explore'; openProject(h); }
 }
 setTimeout(fromHash, 60);
 addEventListener('hashchange', fromHash);

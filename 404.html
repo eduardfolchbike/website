@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>eduardfolch.bike</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;800;900&display=swap">
+<style>
+/* Rutes curtes: eduardfolch.bike/<identificador> porta al projecte; si no existeix, pàgina 404 */
+:root{--black:#0c0b0b;--red:#e3122b;--bone:#efe8e4;--mute:#9d8e8f;--font:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;color-scheme:dark}
+html,body{height:100%;margin:0}
+body{background:var(--black);color:var(--bone);font-family:var(--font);display:grid;place-items:center;
+  padding-left:max(16px, env(safe-area-inset-left,0px));padding-right:max(16px, env(safe-area-inset-right,0px))}
+main{max-width:640px;display:flex;flex-direction:column;gap:18px}
+main[hidden]{display:none}
+.k{margin:0;font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+h1{margin:0;font-weight:900;font-size:clamp(56px,13vw,140px);line-height:.84;letter-spacing:-.07em}
+p{margin:0;color:#c9bcbd;font-size:18px;line-height:1.45}
+a{align-self:flex-start;display:inline-flex;gap:10px;align-items:center;text-decoration:none;font-weight:800;font-size:18px;color:var(--bone);
+  background:var(--red);padding:15px 24px;border-radius:999px}
+a:hover{background:#ff3b1f}
+a:focus-visible{outline:2px solid var(--bone);outline-offset:3px}
+</style>
+</head>
+<body>
+<main id="nf" hidden>
+  <p class="k" id="k">Error 404</p>
+  <h1 id="h">Aquest carril no porta enlloc.</h1>
+  <p id="t">La pàgina que busques no existeix o ha canviat de lloc.</p>
+  <a href="/" id="a">← Torna a l’inici</a>
+</main>
+<script>
+(() => {
+  const PAGE_ES = {'/guia-mobilitat-escolar/':'/guia-movilidad-escolar/'};
+  const TXT = {
+    ca:['Error 404','Aquest carril no porta enlloc.','La pàgina que busques no existeix o ha canviat de lloc.','← Torna a l’inici'],
+    es:['Error 404','Este carril no lleva a ninguna parte.','La página que buscas no existe o ha cambiado de sitio.','← Vuelve al inicio'],
+    en:['Error 404','This lane goes nowhere.','The page you’re looking for doesn’t exist or has moved.','← Back to the home page']
+  };
+  let lang = 'ca';
+  try { const s = localStorage.getItem('efb-lang'); if (TXT[s]) lang = s; } catch(e){}
+  const slug = decodeURIComponent(location.pathname).replace(/^\/+|\/+$/g,'').toLowerCase();
+  const notFound = () => {
+    const t = TXT[lang]; document.documentElement.lang = lang;
+    ['k','h','t','a'].forEach((id,i) => document.getElementById(id).textContent = t[i]);
+    document.getElementById('nf').hidden = false;
+  };
+  if (!/^[a-z0-9-]+$/.test(slug)) return notFound();
+  if (slug === 'explora' || slug === 'cargo') return location.replace('/#' + slug);
+  fetch('/content.json', {cache:'no-cache'}).then(r => r.ok ? r.json() : null).then(c => {
+    const p = c && Array.isArray(c.projects) ? c.projects.find(x => x && String(x.id).toLowerCase() === slug) : null;
+    if (!p) return notFound();
+    const page = typeof p.page === 'string' && /^\/[a-z0-9\/-]*$/.test(p.page) ? p.page : '';
+    location.replace(page ? ((lang === 'es' && PAGE_ES[page]) || page) : '/#' + p.id);
+  }).catch(notFound);
+})();
+</script>
+</body>
+</html>
