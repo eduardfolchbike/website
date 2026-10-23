@@ -113,8 +113,9 @@
       }
     },
     {
-      "id": "guia",
+      "id": "guia-mobilitat-escolar",
       "url": "https://www.diba.cat/documents/d/mediambient/guia-mob-escolar-2026",
+      "page": "/guia-mobilitat-escolar/",
       "years": "2026",
       "ca": {
         "name": "Guia de mobilitat escolar sostenible",
@@ -164,8 +165,7 @@
           "Bike & walking buses",
           "Safe streets"
         ]
-      },
-      "page": "/guia-mobilitat-escolar/"
+      }
     },
     {
       "id": "osona",
