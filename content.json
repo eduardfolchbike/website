@@ -4,6 +4,7 @@
   },
   "site": {
     "ca": {
+      "marquee": "Ring ring!",
       "explore": "Explora",
       "projects": "Projectes",
       "title": "Parlem de bicis.",
@@ -20,6 +21,7 @@
       "visit": "Visita el web"
     },
     "es": {
+      "marquee": "¡Ring ring!",
       "explore": "Explora",
       "projects": "Proyectos",
       "title": "Hablemos de bicis.",
@@ -36,6 +38,7 @@
       "visit": "Visita la web"
     },
     "en": {
+      "marquee": "Ding ding!",
       "explore": "Explore",
       "projects": "Projects",
       "title": "Let’s talk bikes.",

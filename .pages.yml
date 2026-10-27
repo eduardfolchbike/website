@@ -38,6 +38,9 @@ content:
               - name: cta
                 label: "Contacte: text del botó"
                 type: string
+              - name: marquee
+                label: "Banda vermella: text gran"
+                type: string
               - name: tag1
                 label: "Banda vermella: frase 1"
                 type: string
@@ -84,6 +87,9 @@ content:
               - name: cta
                 label: "Contacte: text del botó"
                 type: string
+              - name: marquee
+                label: "Banda vermella: text gran"
+                type: string
               - name: tag1
                 label: "Banda vermella: frase 1"
                 type: string
@@ -129,6 +135,9 @@ content:
                 type: string
               - name: cta
                 label: "Contacte: text del botó"
+                type: string
+              - name: marquee
+                label: "Banda vermella: text gran"
                 type: string
               - name: tag1
                 label: "Banda vermella: frase 1"
